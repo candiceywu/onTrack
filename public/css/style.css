@@ -1,0 +1,17 @@
+#navHeader {
+    font-size: 50px;
+    font-weight: bold;
+    color: darkgreen;
+    border-bottom: solid 2px darkgreen;
+    padding: 0px;
+}
+
+#navbarNav {
+    padding-right: 50px;
+}
+
+.liChange {
+    margin: 0px 25px;
+    font-size: 23px;
+}
+
