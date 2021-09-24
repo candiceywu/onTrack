@@ -10,7 +10,7 @@ GeneralContractors.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            auto_increment: true,
+            autoIncrement: true,
         },
         username: {
             type: DataTypes.STRING,
@@ -20,19 +20,19 @@ GeneralContractors.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        company_name: {
+        generalContractor: {
             type: DataTypes.STRING,
             allowNull: false,   
         },
-        license_number: {
+        license: {
             type: DataTypes.STRING,
             allowNull: false,   
         },
-        password: {
+        phoneNumber: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        business_address: {
+        password: {
             type: DataTypes.STRING,
             allowNull: false,
         },
