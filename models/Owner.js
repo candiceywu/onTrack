@@ -10,7 +10,7 @@ Owner.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            auto_increment: true,
+            autoIncrement: true,
         },
         username: {
             type: DataTypes.STRING,
@@ -20,15 +20,15 @@ Owner.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        first_name: {
+        firstname: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        last_name: {
+        lastname: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        phone_number: {
+        number: {
             type: DataTypes.STRING,
             allowNull: false,
         },
