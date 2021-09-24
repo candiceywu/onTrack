@@ -25,7 +25,5 @@
     "node": "^16.9.1",
     "sequelize": "^6.3.5"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  }
+  "devDependencies": {}
 }
