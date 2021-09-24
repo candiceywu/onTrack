@@ -35,21 +35,12 @@ router.post('/', async (req, res) => {
 
         } else {
             //if it's an owner
-<<<<<<< HEAD
-            const ownerData = await Owner.create({
-                username: req.body.oUsername,
-                email: req.body.oEmail,
-                firstName: req.body.oFirstname,
-                lastName: req.body.oLastname,
-                phoneNumber: req.body.oNumber,
-=======
             userData = await Owner.create({
                 username: req.body.oUsername,
                 email: req.body.oEmail,
                 firstname: req.body.oFirstname,
                 lastname: req.body.oLastname,
                 number: req.body.oNumber,
->>>>>>> c1f045bbd82f1e5b10086ab4090147801c29cb46
                 password: req.body.oPassword,
             });
         }

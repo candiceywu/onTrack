@@ -39,13 +39,8 @@ Scope.init(
         sequelize,
         timestamps: false,
         freezeTableName: true,
-<<<<<<< HEAD
-        underscored: true,
-        modelName: 'owner'
-=======
         underScored: true,
         modelName: 'scope'
->>>>>>> c1f045bbd82f1e5b10086ab4090147801c29cb46
     }
 );
 
