@@ -52,20 +52,23 @@ router.post('/', async (req, res) => {
 
 
 //user login
-router.post('/login', async (req, res) => {
+//do we need a conditional for contractor vs owner?
+router.get('/login', async (req, res) => {
     try {
-        const userData = await User.findOne({ where: { email: req.body.email } });
+        const ownerData = await Owner.findOne({ where: { email: req.body.email } });
+        const gcData = await Contractor.findOne({ where: { email: req.body.email } });
 
-        if (!userData) {
+        if (!ownerData && !gcData) {
             res
                 .status(400)
                 .json({ message: 'Incorrect email or password, please try again' });
             return;
         }
 
-        const validPassword = await userData.checkPassword(req.body.password);
+        const ownerPassword = await ownerData.checkPassword(req.body.password);
+        const gcPassword = await gcData.checkPassword(req.body.password);
 
-        if (!validPassword) {
+        if (!ownerPassword && !gcPassword ) {
             res
                 .status(400)
                 .json({ message: 'Incorrect email or password, please try again' });
@@ -73,7 +76,10 @@ router.post('/login', async (req, res) => {
         }
 
         req.session.save(() => {
-            req.session.user_id = userData.id;
+            req.session.user_id =  {
+                if (ownerData.id) {
+                    req.session.user_id
+                }
             req.session.logged_in = true;
 
             res.json({ user: userData, message: 'You are now logged in!' });
