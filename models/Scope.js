@@ -23,13 +23,13 @@ Scope.init(
         },
 
         is_complete: {
-            type: DataType.BOOLEAN,
+            type: DataTypes.BOOLEAN,
             allowNull: false,
         },
 
-        author_id: {
-            type: DataTypes
-        },
+        // author_id: {
+        //     type: DataTypes
+        // },
 
         picture: {
             type: DataTypes.STRING(1234),
