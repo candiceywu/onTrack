@@ -26,13 +26,27 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/signup', (req, res) => {
+router.get('/loginchoice', (req, res) => {
+
+  res.render('loginchoice');
+})
+
+router.get('/ownersignup', (req, res) => {
   // if (req.session.logged_in) {
   //   res.redirect('/');
   //   return;
   // }
 
-  res.render('signup');
+  res.render('ownersignup');
+});
+
+router.get('/gcsignup', (req, res) => {
+  // if (req.session.logged_in) {
+  //   res.redirect('/');
+  //   return;
+  // }
+
+  res.render('gcsignup');
 });
 
 
