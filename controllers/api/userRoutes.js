@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
     try {
         //if it's a contractor
+        let isContractor = false;
         if (req.body.license) {
             const userData = await Contractor.create({
                 username: req.body.username,
@@ -26,6 +27,7 @@ router.post('/', async (req, res) => {
                 license: req.body.license,
                 phoneNumber: req.body.phoneNumber
             });
+            isContractor = true;
         } else {
             //if it's an owner
             const userData = await Owner.create({
@@ -40,7 +42,7 @@ router.post('/', async (req, res) => {
 
         req.session.save(() => {
             req.session.loggedIn = true;
-
+            req.session.isContractor = true;
             res.status(200).json(userData);
         });
     } catch (err) {
@@ -52,7 +54,6 @@ router.post('/', async (req, res) => {
 
 
 //user login
-//do we need a conditional for contractor vs owner?
 router.get('/login', async (req, res) => {
     try {
         const ownerData = await Owner.findOne({ where: { email: req.body.email } });
@@ -68,7 +69,7 @@ router.get('/login', async (req, res) => {
         const ownerPassword = await ownerData.checkPassword(req.body.password);
         const gcPassword = await gcData.checkPassword(req.body.password);
 
-        if (!ownerPassword && !gcPassword ) {
+        if (!ownerPassword && !gcPassword) {
             res
                 .status(400)
                 .json({ message: 'Incorrect email or password, please try again' });
@@ -76,8 +77,8 @@ router.get('/login', async (req, res) => {
         }
 
         req.session.save(() => {
-            
-            if(ownerData){
+
+            if (ownerData) {
                 req.session.user_id = ownerData.id;
             } else {
                 req.seesion.user_id = gcData.id;
