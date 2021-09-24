@@ -2,14 +2,14 @@ const router = require('express').Router();
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
-    res.render('homepage') 
-    // // {
-    // //   users,
-    //   // logged_in: req.session.logged_in,
-    // // }
-    // );
+    res.render('homepage' 
+    // {
+    //   users,
+      // logged_in: req.session.logged_in,
+    // }
+    );
   } catch (err) {
     res.status(500).json(err);
   }
@@ -29,7 +29,7 @@ router.get('/login', (req, res) => {
 
 
 // GET one project
-router.get('/project/:id', async (req, res) => {
+router.get('/project/:id', withAuth, async (req, res) => {
   // If the user is not logged in, redirect the user to the login page
   if (!req.session.loggedIn) {
     res.redirect('/login');
@@ -61,7 +61,8 @@ router.get('/project/:id', async (req, res) => {
 
 
 // GET one scope
-router.get('/scope/:id', async (req, res) => {
+//need to create different viewing permissions for contractor vs. owner
+router.get('/scope/:id', withAuth, async (req, res) => {
   // If the user is not logged in, redirect the user to the login page
   if (!req.session.loggedIn) {
     res.redirect('/login');
