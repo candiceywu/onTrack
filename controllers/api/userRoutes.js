@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
         //if it's a contractor
         let isContractor = false;
         if (req.body.license) {
-            const userData = await Contractor.create({
+            const userData = await GeneralContractors.create({
                 username: req.body.username,
                 email: req.body.email,
                 password: req.body.password,
@@ -57,7 +57,7 @@ router.post('/', async (req, res) => {
 router.get('/login', async (req, res) => {
     try {
         const ownerData = await Owner.findOne({ where: { email: req.body.email } });
-        const gcData = await Contractor.findOne({ where: { email: req.body.email } });
+        const gcData = await GeneralContractors.findOne({ where: { email: req.body.email } });
 
         if (!ownerData && !gcData) {
             res
@@ -105,8 +105,6 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
     }
 });
-
-module.exports = router;
 
 
 
