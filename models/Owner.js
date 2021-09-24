@@ -20,6 +20,7 @@ Owner.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+<<<<<<< HEAD
         oFirstname: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -29,6 +30,17 @@ Owner.init(
             allowNull: false,
         },
         oNnumber: {
+=======
+        firstname: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        lastname: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        number: {
+>>>>>>> c1f045bbd82f1e5b10086ab4090147801c29cb46
             type: DataTypes.STRING,
             allowNull: false,
         },
