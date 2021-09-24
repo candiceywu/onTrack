@@ -12,22 +12,26 @@ GeneralContractors.init(
             primaryKey: true,
             auto_increment: true,
         },
-        
-        company_name: {
+        username: {
             type: DataTypes.STRING,
             allowNull: false,   
         },
-
         email: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-
+        company_name: {
+            type: DataTypes.STRING,
+            allowNull: false,   
+        },
+        license_number: {
+            type: DataTypes.STRING,
+            allowNull: false,   
+        },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-
         business_address: {
             type: DataTypes.STRING,
             allowNull: false,
