@@ -44,5 +44,5 @@ Scope.init(
     }
 );
 
-
+module.exports = Scope;
 

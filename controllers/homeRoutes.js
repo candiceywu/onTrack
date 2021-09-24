@@ -2,13 +2,13 @@ const router = require('express').Router();
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    res.render('homepage' 
-    // {
-    //   users,
+    res.render('homepage'
+      // {
+      //   users,
       // logged_in: req.session.logged_in,
-    // }
+      // }
     );
   } catch (err) {
     res.status(500).json(err);
@@ -26,66 +26,28 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/signup', (req, res) => {
+router.get('/loginchoice', (req, res) => {
+
+  res.render('loginchoice');
+})
+
+router.get('/ownersignup', (req, res) => {
   // if (req.session.logged_in) {
   //   res.redirect('/');
   //   return;
   // }
 
-  res.render('signup');
+  res.render('ownersignup');
 });
 
+router.get('/gcsignup', (req, res) => {
+  // if (req.session.logged_in) {
+  //   res.redirect('/');
+  //   return;
+  // }
 
-
-// GET one project
-router.get('/project/:id', withAuth, async (req, res) => {
-  // If the user is not logged in, redirect the user to the login page
-  if (!req.session.loggedIn) {
-    res.redirect('/login');
-  } else {
-    // If the user is logged in, allow them to view the gallery
-    try {
-      const projectData = await Project.findByPk(req.params.id, {
-        include: [
-          {
-            model: Project,
-            attributes: [
-              'id',
-              'name',
-              'address',
-              'cost',
-              'description',
-            ],
-          },
-        ],
-      });
-      const project = projectData.get({ plain: true });
-      res.render('project', { project, loggedIn: req.session.loggedIn });
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
-  }
+  res.render('gcsignup');
 });
 
-
-// GET one scope
-//need to create different viewing permissions for contractor vs. owner
-router.get('/scope/:id', withAuth, async (req, res) => {
-  // If the user is not logged in, redirect the user to the login page
-  if (!req.session.loggedIn) {
-    res.redirect('/login');
-  } else {
-    // If the user is logged in, allow user to view the scope
-    try {
-      const scopeData = await Scope.findByPk(req.params.id);
-      const scope = scopeData.get({ plain: true });
-      res.render('scope', { scope, loggedIn: req.session.loggedIn });
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
-  }
-});
 
 module.exports = router;
