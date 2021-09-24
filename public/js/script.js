@@ -1,9 +1,9 @@
-const loginMain = document.getElementById("loginMain");
-const loginNav = document.getElementById("loginNav");
+const ownerBtn = document.getElementById('ownerbtnjs');
+const gcBtn = document.getElementById('gcbtnjs');
 
 function printHello(){
     console.log("hello");
 }
 
-loginMain.addEventListener('click', printHello);
-loginNav.addEventListener('click', printHello);
+ownerBtn.addEventListener('click', printHello);
+gcBtn.addEventListener('click', printHello);
