@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models')
+const { GeneralContractors, Owner } = require('../../models')
 
 
 
@@ -16,33 +16,38 @@ router.get('/', (req, res) => {
 // CREATE new user 
 router.post('/', async (req, res) => {
     try {
-        //if it's a contractor
-        let isContractor = false;
-        if (req.body.license) {
-            const userData = await GeneralContractors.create({
-                username: req.body.username,
-                email: req.body.email,
-                password: req.body.password,
-                generalContractor: req.body.generalContractor,
-                license: req.body.license,
-                phoneNumber: req.body.phoneNumber
+        
+        if (req.body.gcLicense) {
+            const gcData = await GeneralContractors.create({
+                username: req.body.gcUsername,
+                email: req.body.gcEmail,
+                generalContractor: req.body.gcCompanyName,
+                license: req.body.gcLicense,
+                phoneNumber: req.body.gcNumber,
+                password: req.body.gcPassword,
             });
-            isContractor = true;
         } else {
             //if it's an owner
-            const userData = await Owner.create({
-                username: req.body.username,
+            const ownerData = await Owner.create({
+                username: req.body.oEmail,
                 email: req.body.email,
-                password: req.body.password,
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                phoneNumber: req.body.phoneNumber
+                firstName: req.body.oFirstname,
+                lastName: req.body.oLastname,
+                phoneNumber: req.body.oNumber,
+                password: req.body.oPassword,
             });
         }
 
         req.session.save(() => {
-            req.session.loggedIn = true;
-            req.session.isContractor = true;
+
+            if (ownerData) {
+                req.session.isContractor = false;
+                req.session.user_id = ownerData.id;
+            } else {
+                req.session.isContractor = true;
+                req.session.user_id = gcData.id;
+            }
+            
             res.status(200).json(userData);
         });
     } catch (err) {
@@ -56,8 +61,8 @@ router.post('/', async (req, res) => {
 //user login
 router.get('/login', async (req, res) => {
     try {
-        const ownerData = await Owner.findOne({ where: { email: req.body.email } });
-        const gcData = await GeneralContractors.findOne({ where: { email: req.body.email } });
+        const ownerData = await Owner.findOne({ where: { oEmail: req.body.email } });
+        const gcData = await GeneralContractors.findOne({ where: { gcEmail: req.body.email } });
 
         if (!ownerData && !gcData) {
             res
@@ -79,9 +84,11 @@ router.get('/login', async (req, res) => {
         req.session.save(() => {
 
             if (ownerData) {
+                req.session.isContractor = false;
                 req.session.user_id = ownerData.id;
             } else {
-                req.seesion.user_id = gcData.id;
+                req.session.isContractor = true;
+                req.session.user_id = gcData.id;
             }
 
             req.session.logged_in = true;
