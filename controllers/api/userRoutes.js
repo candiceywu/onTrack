@@ -76,10 +76,13 @@ router.get('/login', async (req, res) => {
         }
 
         req.session.save(() => {
-            req.session.user_id =  {
-                if (ownerData.id) {
-                    req.session.user_id
-                }
+            
+            if(ownerData){
+                req.session.user_id = ownerData.id;
+            } else {
+                req.seesion.user_id = gcData.id;
+            }
+
             req.session.logged_in = true;
 
             res.json({ user: userData, message: 'You are now logged in!' });
