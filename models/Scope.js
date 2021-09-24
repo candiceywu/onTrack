@@ -27,9 +27,9 @@ Scope.init(
             allowNull: false,
         },
 
-        author_id: {
-            type: DataTypes
-        },
+        // author_id: {
+        //     type: DataTypes
+        // },
 
         picture: {
             type: DataTypes.STRING(1234),
