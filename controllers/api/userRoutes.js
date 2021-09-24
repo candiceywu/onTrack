@@ -2,16 +2,28 @@ const router = require('express').Router();
 const { GeneralContractors, Owner } = require('../../models')
 
 
-
-router.get('/', (req, res) => {
+// Get All Owners //
+router.get('/owners', async (req, res) => {
     try {
-        res.status(200).json({ message: "Route Works" })
+
+        const userData = await Owner.findAll();
+
+        res.status(200).json(userData);
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
+router.get('/gcs', async (req, res) => {
+    try {
 
+        const userData = await GeneralContractors.findAll();
+
+        res.status(200).json(userData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 // CREATE new user 
 router.post('/', async (req, res) => {
