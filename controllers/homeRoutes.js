@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     res.render('homepage' 
     // {
@@ -26,19 +26,33 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/signup', (req, res) => {
+router.get('/loginchoice', (req, res) => {
+
+  res.render('loginchoice');
+})
+
+router.get('/ownersignup', (req, res) => {
   // if (req.session.logged_in) {
   //   res.redirect('/');
   //   return;
   // }
 
-  res.render('signup');
+  res.render('ownersignup');
+});
+
+router.get('/gcsignup', (req, res) => {
+  // if (req.session.logged_in) {
+  //   res.redirect('/');
+  //   return;
+  // }
+
+  res.render('gcsignup');
 });
 
 
 
 // GET one project
-router.get('/project/:id', withAuth, async (req, res) => {
+router.get('/project/:id', async (req, res) => {
   // If the user is not logged in, redirect the user to the login page
   if (!req.session.loggedIn) {
     res.redirect('/login');
@@ -71,7 +85,7 @@ router.get('/project/:id', withAuth, async (req, res) => {
 
 // GET one scope
 //need to create different viewing permissions for contractor vs. owner
-router.get('/scope/:id', withAuth, async (req, res) => {
+router.get('/scope/:id', async (req, res) => {
   // If the user is not logged in, redirect the user to the login page
   if (!req.session.loggedIn) {
     res.redirect('/login');

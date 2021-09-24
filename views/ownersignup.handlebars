@@ -1,0 +1,42 @@
+<div class="jumbotron vertical-center">
+  <div class="container d-flex justify-content-center marginDown">
+    <form class="formStyles row" style="max-width: 800px">
+        <h2 class="text-center" style="color: white"> Owner Sign-Up Below</h2>
+        {{!-- If Statement Owner Form --}}
+         <div class="form-group upDownMargin">
+            <label for="exampleInputEmail1" style="font-size: 20px; font-weight: bold">Username</label>
+            <br>
+            <input type="text" class="form-control" id="oUsername" aria-describedby="emailHelp" placeholder="Enter a Username" style="border: solid 2px black">  
+        </div>
+        <div class="form-group upDownMargin">
+            <label for="exampleInputPassword1" style="font-size: 20px; font-weight: bold">Email</label>
+            <input type="email" class="form-control" id="oEmail" placeholder="Enter a Email" style="border: solid 2px black">
+        </div>
+        <div class="form-group upDownMargin">
+            <label for="exampleInputPassword1" style="font-size: 20px; font-weight: bold">First Name</label>
+            <input type="text" class="form-control" id="oFirstname" placeholder="Please enter your First Name" style="border: solid 2px black">
+        </div>
+        <div class="form-group upDownMargin">
+            <label for="exampleInputPassword1" style="font-size: 20px; font-weight: bold">Last Name</label>
+            <input type="text" class="form-control" id="oLastname" placeholder="Please enter your Last Name" style="border: solid 2px black">
+        </div>
+        <div class="form-group upDownMargin">
+            <label for="exampleInputPassword1" style="font-size: 20px; font-weight: bold">Phone Number</label>
+            <input type="text" class="form-control" id="oNumber" placeholder="Enter a Contact #" style="border: solid 2px black">
+        </div>
+        <div class="form-group upDownMargin">
+            <label for="exampleInputPassword1" style="font-size: 20px; font-weight: bold">Password</label>
+            <input type="password" class="form-control" id="oPassword" placeholder="Password" style="border: solid 2px black">
+        </div>
+        <div class="form-group upDownMargin">
+            <label for="exampleInputPassword1" style="font-size: 20px; font-weight: bold">Re-Enter Password</label>
+            <input type="password" class="form-control" id="oPasswordcheck" placeholder="Password" style="border: solid 2px black">
+        </div>
+        <div class="d-flex justify-content-end loginButton">
+            <button type="submit" class="upDownMargin btn btn-primary" id="submitBtn">Submit</button>
+        </div>
+    </form>
+  </div>
+</div>
+
+<script src="/js/signup.js"></script>

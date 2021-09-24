@@ -1,20 +1,16 @@
-const ownerBtn = document.getElementById('ownerbtnjs');
-const gcBtn = document.getElementById('gcbtnjs');
+const ownerBtn = document.getElementById('ownerBtn');
+const gcBtn = document.getElementById('gcBtn');
 
 function changeOwnerBtn(event){
     event.preventDefault();
-    console.log("hello");
-
-    ownerBtn.style.backgroundColor = "blue";
-    gcBtn.style.backgroundColor = "gray";
-
+    
+    document.location.replace('/ownersignup');
 };
 
 function changeGcBtn(event){
     event.preventDefault();
     
-    ownerBtn.style.backgroundColor = "gray";
-    gcBtn.style.backgroundColor = "blue";
+    document.location.replace('/gcsignup');
 
 };
 
