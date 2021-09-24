@@ -10,29 +10,29 @@ Owner.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            auto_increment: true,
+            autoIncrement: true,
         },
-        username: {
+        oUsername: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        email: {
+        oEmail: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        first_name: {
+        oFirstname: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        last_name: {
+        oLastname: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        phone_number: {
+        oNnumber: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        password: {
+        oPassword: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -41,7 +41,7 @@ Owner.init(
         sequelize,
         timestamps: false,
         freezeTableName: true,
-        underScored: true,
+        underscored: true,
         modelName: 'owner'
     }
 );

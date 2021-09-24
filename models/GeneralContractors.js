@@ -10,13 +10,13 @@ GeneralContractors.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            auto_increment: true,
+            autoIncrement: true,
         },
-        username: {
+        oUsername: {
             type: DataTypes.STRING,
             allowNull: false,   
         },
-        email: {
+        oEmail: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -41,7 +41,7 @@ GeneralContractors.init(
         sequelize,
         timestamps: false,
         freezeTableName: true,
-        underScored: true,
+        underscored: true,
         modelName: 'generalContractor'
     }
 );
