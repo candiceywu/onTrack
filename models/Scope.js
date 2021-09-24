@@ -28,7 +28,7 @@ Scope.init(
         },
 
         author_id: {
-            
+            type: DataTypes
         },
 
         picture: {
