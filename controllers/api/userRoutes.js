@@ -16,9 +16,13 @@ router.get('/', (req, res) => {
 // CREATE new user 
 router.post('/', async (req, res) => {
     try {
-        
+
+        let userData;
+        let isContractor = false;
+
+            console.log(req.body);
         if (req.body.gcLicense) {
-            const gcData = await GeneralContractors.create({
+            userData = await GeneralContractors.create({
                 username: req.body.gcUsername,
                 email: req.body.gcEmail,
                 generalContractor: req.body.gcCompanyName,
@@ -26,27 +30,27 @@ router.post('/', async (req, res) => {
                 phoneNumber: req.body.gcNumber,
                 password: req.body.gcPassword,
             });
+
+            isContractor = true;
+
         } else {
             //if it's an owner
-            const ownerData = await Owner.create({
-                username: req.body.oEmail,
-                email: req.body.email,
-                firstName: req.body.oFirstname,
-                lastName: req.body.oLastname,
-                phoneNumber: req.body.oNumber,
+            userData = await Owner.create({
+                username: req.body.oUsername,
+                email: req.body.oEmail,
+                firstname: req.body.oFirstname,
+                lastname: req.body.oLastname,
+                number: req.body.oNumber,
                 password: req.body.oPassword,
             });
         }
 
         req.session.save(() => {
 
-            if (ownerData) {
-                req.session.isContractor = false;
-                req.session.user_id = ownerData.id;
-            } else {
-                req.session.isContractor = true;
-                req.session.user_id = gcData.id;
-            }
+          
+        req.session.isContractor = isContractor;
+        req.session.user_id = userData.id;
+
             
             res.status(200).json(userData);
         });

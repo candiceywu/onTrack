@@ -40,7 +40,7 @@ Scope.init(
         timestamps: false,
         freezeTableName: true,
         underScored: true,
-        modelName: 'owner'
+        modelName: 'scope'
     }
 );
 
