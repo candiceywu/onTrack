@@ -82,6 +82,10 @@ body {
     border-color: #333;
 }
 
+.marginDown {
+    margin-top: 100px;
+}
+
 /* Focus Buttons */
 
 .focus:hover {

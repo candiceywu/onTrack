@@ -23,6 +23,7 @@
     "mon": "0.0.8",
     "mysql2": "^2.2.1",
     "node": "^16.9.1",
+    "nodemon": "^2.0.13",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {}
