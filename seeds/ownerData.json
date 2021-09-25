@@ -1,0 +1,26 @@
+[
+    {
+        "oUsername": "syackzan",
+        "oEmail": "syackzan@gmail.com",
+        "oFirstname": "scotty",
+        "oLastname": "yackzan",
+        "oNumber": "5306815024",
+        "oPassword": "password"
+    },
+    {
+        "oUsername": "candiceW",
+        "oEmail": "CandiceW@gmail.com",
+        "oFirstname": "Candice",
+        "oLastname": "Wu",
+        "oNumber": "5306783059",
+        "oPassword": "smartpassword"
+    },
+    {
+        "oUsername": "JordanS",
+        "oEmail": "JordanS@gmail.com",
+        "oFirstname": "Jordan",
+        "oLastname": "Scott",
+        "oNumber": "4145679024",
+        "oPassword": "smartestpassword"
+    }
+]

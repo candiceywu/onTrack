@@ -97,6 +97,8 @@ router.get('/login', async (req, res) => {
             return;
         }
 
+        console.log("Success. Logged In");
+
         req.session.save(() => {
 
             if (ownerData) {

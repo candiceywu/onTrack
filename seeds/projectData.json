@@ -1,0 +1,26 @@
+[
+    {
+        "name": "2-Story Residential",
+        "address": "1256 RealWorld Lane",
+        "cost": 200000,
+        "description": "This is the world we live in",
+        "owner_id": 1,
+        "general_contractor_id": 1
+    },
+    {
+        "name": "30 Story High-Rise",
+        "address": "1256 RealWorld Lane",
+        "cost": 1500000,
+        "description": "This is the world we live in",
+        "owner_id": 2,
+        "general_contractor_id": 1
+    },
+    {
+        "name": "Sudwerk Restaurant",
+        "address": "1256 RealWorld Lane",
+        "cost": 3000000,
+        "description": "This is the world we live in",
+        "owner_id": 3,
+        "general_contractor_id": 1
+    }
+]
