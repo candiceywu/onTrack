@@ -4,7 +4,7 @@ const projectRoutes = require('./projectRoutes');
 const scopeRoutes = require('./scopeRoutes');
 
 router.use('/users', userRoutes);
-router.use('/project', projectRoutes);
+router.use('/projects', projectRoutes);
 router.use('/scope', scopeRoutes);
 
 module.exports = router;
