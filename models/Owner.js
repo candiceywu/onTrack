@@ -12,11 +12,11 @@ Owner.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        oUsername: {
+        username: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        oEmail: {
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -32,7 +32,7 @@ Owner.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        oPassword: {
+        password: {
             type: DataTypes.STRING,
             allowNull: false,
         },
