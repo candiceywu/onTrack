@@ -1,18 +1,10 @@
-const ownerBtn = document.getElementById('ownerBtn');
-const gcBtn = document.getElementById('gcBtn');
+const loginBtn = document.getElementById('loginBtn');
 
-function changeOwnerBtn(event){
+const logIn = (event) => {
     event.preventDefault();
-    
-    document.location.replace('/ownersignup');
-};
+    //ADD FUNCTIONALITY TO CHECK PASSWORDS & EMAIL MATCH//
 
-function changeGcBtn(event){
-    event.preventDefault();
-    
-    document.location.replace('/gcsignup');
+    location.href = "/projects";
+}
 
-};
-
-ownerBtn.addEventListener('click', changeOwnerBtn);
-gcBtn.addEventListener('click', changeGcBtn);
+loginBtn.addEventListener('click', logIn);
