@@ -12,11 +12,11 @@ GeneralContractors.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        oUsername: {
+        username: {
             type: DataTypes.STRING,
             allowNull: false,   
         },
-        oEmail: {
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
         },
