@@ -1,10 +1,10 @@
 [
     {
-        "gcUsername": "Sasquatch",
-        "gcEmail": "Sasquatch@gmail.com",
-        "gcCompanyName": "Sasquatch Construction",
-        "gcLicense": "#5243523",
-        "gcNumber": "7059843568",
-        "gcPassword": "sasquatchKing"
+        "username": "Sasquatch",
+        "email": "Sasquatch@gmail.com",
+        "generalContractor": "Sasquatch Construction",
+        "license": "#5243523",
+        "phoneNumber": "7059843568",
+        "password": "sasquatchKing"
     }
 ]

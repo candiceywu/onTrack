@@ -1,26 +1,26 @@
 [
     {
-        "oUsername": "syackzan",
-        "oEmail": "syackzan@gmail.com",
-        "oFirstname": "scotty",
-        "oLastname": "yackzan",
-        "oNumber": "5306815024",
-        "oPassword": "password"
+        "username": "syackzan",
+        "email": "syackzan@gmail.com",
+        "firstname": "scotty",
+        "lastname": "yackzan",
+        "number": "5306815024",
+        "password": "password"
     },
     {
-        "oUsername": "candiceW",
-        "oEmail": "CandiceW@gmail.com",
-        "oFirstname": "Candice",
-        "oLastname": "Wu",
-        "oNumber": "5306783059",
-        "oPassword": "smartpassword"
+        "username": "candiceW",
+        "email": "CandiceW@gmail.com",
+        "firstname": "Candice",
+        "lastname": "Wu",
+        "number": "5306783059",
+        "password": "smartpassword"
     },
     {
-        "oUsername": "JordanS",
-        "oEmail": "JordanS@gmail.com",
-        "oFirstname": "Jordan",
-        "oLastname": "Scott",
-        "oNumber": "4145679024",
-        "oPassword": "smartestpassword"
+        "username": "JordanS",
+        "email": "JordanS@gmail.com",
+        "firstname": "Jordan",
+        "lastname": "Scott",
+        "number": "4145679024",
+        "password": "smartestpassword"
     }
 ]

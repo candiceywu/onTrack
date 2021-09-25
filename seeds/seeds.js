@@ -8,17 +8,17 @@ const projectData = require('./projectData.json');
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  const users = await Owner.bulkCreate(ownerData, {
+  const ownerSeed = await Owner.bulkCreate(ownerData, {
     individualHooks: true,
     returning: true,
   });
 
-  const users = await GeneralContractors.bulkCreate(gcData, {
+  const gcSeed = await GeneralContractors.bulkCreate(gcData, {
     individualHooks: true,
     returning: true,
   });
 
-  const users = await Project.bulkCreate(projectData, {
+  const projectSeed = await Project.bulkCreate(projectData, {
     individualHooks: true,
     returning: true,
   });
