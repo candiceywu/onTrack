@@ -71,13 +71,25 @@ body {
     border: solid 2px #333;
     background-color: gray;
     padding: 5px;
-    border-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .btn {
     max-width: 100px;
     background-color: #333;
     border-color: #333;
+}
+
+.btn1 {
+    width: fit-content;
+    background-color: #333;
+    border-color: #333;
+    border: solid 2px white;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+    
 }
 
 .marginDown {

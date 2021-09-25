@@ -1,4 +1,19 @@
+const ownerBtn = document.getElementById('ownerBtn');
+const gcBtn = document.getElementById('gcBtn');
 const loginBtn = document.getElementById('loginBtn');
+
+function changeOwnerBtn(event){
+    event.preventDefault();
+    
+    document.location.replace('/ownersignup');
+};
+
+function changeGcBtn(event){
+    event.preventDefault();
+    
+    document.location.replace('/gcsignup');
+
+};
 
 const logIn = (event) => {
     event.preventDefault();
@@ -7,4 +22,11 @@ const logIn = (event) => {
     location.href = "/projects";
 }
 
-loginBtn.addEventListener('click', logIn);
+if (loginBtn){
+    loginBtn.addEventListener('click', logIn);
+}
+
+if(ownerBtn){
+    ownerBtn.addEventListener('click', changeOwnerBtn);
+    gcBtn.addEventListener('click', changeGcBtn);
+}
