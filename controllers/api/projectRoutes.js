@@ -6,22 +6,15 @@ const { Project } = require('../../models')
 //GET all projects on dashboard
 router.get('/', async (req, res) => {
   try {
-    const dbprojectData = await Project.findAll({
-      include: [
-        {
-          model: Project,
-          attributes: ['name'],
-        },
-      ],
-    });
+    const dbprojectData = await Project.findAll();
+      // include: [
+      //   {
+      //     model: Project,
+      //     attributes: ['name'],
+      //   },
+      // ],
 
-    const projects = dbprojectData.map((project) =>
-      project.get({ plain: true })
-    );
-
-    res.render('homepage', {
-      projects,
-    });
+    res.status(200).json(dbprojectData);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -60,6 +53,19 @@ router.get('/project/:id', async (req, res) => {
       console.log(err);
       res.status(500).json(err);
     }
+  }
+});
+
+router.post('/', async (req, res) => {
+  try {
+    const newProject = await Project.create({
+      ...req.body,
+      //user_id: 2  //req.session.user_id,
+    });
+
+    res.status(200).json(newProject);
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 
