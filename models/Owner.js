@@ -41,7 +41,7 @@ Owner.init(
         sequelize,
         timestamps: false,
         freezeTableName: true,
-        underScored: true,
+        underscored: true,
         modelName: 'owner'
     }
 );
