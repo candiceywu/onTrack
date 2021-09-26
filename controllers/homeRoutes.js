@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { GeneralContractors, Owner } = require('../models');
+const { GeneralContractors, Owner, Project } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -47,13 +47,18 @@ router.get('/gcsignup', (req, res) => {
   res.render('gcsignup');
 });
 
-router.get('/projects', (req, res) => {
+router.get('/projects', async (req, res) => {
   // if (req.session.logged_in) {
   //   res.redirect('/');
   //   return;
   // }
 
-  res.render('projects');
+  const projectData = await Project.findAll();
+
+  // Serialize data so the template can read it
+  const projects = projectData.map((project) => project.get({ plain: true }));
+
+  res.render('projects', { projects });
 });
 
 
