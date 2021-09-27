@@ -120,12 +120,12 @@ router.post('/login', async (req, res) => {
   
             if (ownerData) {
                 req.session.isContractor = false;
-                req.session.userInfo = ownerData;
+                req.session.user_id = ownerData.id;
                 req.session.logged_in = true;
                 res.json({ user: ownerData, message: 'You are now logged in!' });
             } else {
                 req.session.isContractor = true;
-                req.session.userInfo = gcData;
+                req.session.user_id = gcData.id;
                 req.session.logged_in = true;
                 res.json({ user: gcData, message: 'You are now logged in!' });
             } 

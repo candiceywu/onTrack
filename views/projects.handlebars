@@ -1,8 +1,9 @@
 <div class="jumbotron" style="margin-top: 72px">
     <div class="container projectBorder">
         <div class="row">
-            <div class="col-md-10 align-text-bottom">
-                <h2 class="m-0" id="h2">{{userInfo.generalContractor}} | Projects Dashboard</h2>
+            <div class="d-flex col-md-10 align-text-bottom">
+                <h2 class="m-0" id="h2">{{user.generalContractor}} | Projects Dashboard</h2>
+                <p id="idStore" style="visibility: hidden">{{user.id}}</p>
             </div>
             <div class="d-flex col-md-2 align-items-end justify-content-end">
                 <button class="btn1" id="newProject" style="margin-right: 5px">+ New Project 🏠</button>
@@ -27,7 +28,7 @@
         </div>
         
         <div class="row projectDivider2">
-            {{#each userInfo.projects as |project|}}
+            {{#each user.projects as |project|}}
             <div class="d-flex col-md-1 projectHeaders2">
                 <p class="text-align-bottom m-0">{{project.id}}</p>
             </div>

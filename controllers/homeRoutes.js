@@ -63,45 +63,17 @@ router.get('/gcsignup', (req, res) => {
 
 router.get('/projects', async (req, res) => {
   try {
+        
+      let userData = await GeneralContractors.findByPk(req.session.user_id, {
+        include: {model: Project}
+      })
       
-      // const ownerData = await Owner.findOne({ where: { username: req.body.loginUser } }, {
-      //     include: [ {model: Project}]
-      // });
-
-      // const gcData = await GeneralContractors.findOne(
-      //     { where: { username: req.body.loginUser },
-      //     include: [ {model: Project}],
-      // });
-      
-      // console.log(gcData);
-
-      // if (!ownerData && !gcData) {
-      //     res
-      //         .status(400)
-      //         .json({ message: 'Incorrect email or password, please try again' });
-      //     return;
-      // }
-
-      // // if (ownerData){
-      // //     ownerData = ownerData.get({ plain: true})
-      // // } else {
-      // //     gcData = gcData.get({ plain:true})
-      // // }
-
-      // console.log(ownerData);
-      // console.log(gcData);
-
-      // if (ownerData) {
-      //     //res.render('projects', { ownerData })
-      //     res.json(ownerData);
-      // } else {
-          
-      //     res.json(gcData);
-      // } 
+      let user = userData.get({ plain: true});
+      console.log(user);
       
       res.render('projects', { 
+        user,
         isContractor: req.session.isContractor,
-        userInfo: req.session.userInfo,
         logged_in: req.session.logged_in,
        })
       
