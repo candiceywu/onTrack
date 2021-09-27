@@ -1,0 +1,98 @@
+<div class="jumbotron" style="margin-top: 72px">
+    <div class="container scopeBorder">
+        <div class="row">
+            <div class="col-md-10 align-text-bottom">
+                {{!-- not sure if this is correct for grabbing project name --}}
+                <h2 class="m-0" id="h2">{{req.body.name.generalContractor}} | Scope Dashboard</h2>
+            </div>
+            <div class="d-flex col-md-2 align-items-end justify-content-end">
+                <button class="btn1" id="newScope" style="margin-right: 5px">+ New Project 🏠</button>
+            </div>
+        </div>
+        <div class="row scopeDivider1">
+            <div class="d-flex col-md-1 scopeHeaders1">
+                <p class="text-align-bottom m-0">ID #</p>
+            </div>
+            <div class="d-flex col-md-3 scopeHeaders1">
+                <p class="text-align-bottom m-0">NAME</p>
+            </div>
+            <div class="d-flex col-md-4 scopeHeaders1">
+                <p class="text-align-bottom m-0">ADDRESS</p>
+            </div>
+            <div class=" d-flex col-md-3 scopeHeaders1">
+                <p class="text-align-bottom m-0">COST</p>
+            </div>
+            <div class=" d-flex col-md-1 scopeHeaders1">
+                <p class="text-align-bottom m-0">VIEW</p>
+            </div>
+        </div>
+        
+        <div class="row scopeDivider2">
+            {{#each userInfo.scopes as |scope|}}
+            <div class="d-flex col-md-1 scopeHeaders2">
+                <p class="text-align-bottom m-0">{{project.id}}</p>
+            </div>
+            <div class="d-flex col-md-3 scopeHeaders2">
+                <p class="text-align-bottom m-0">{{project.name}}</p>
+            </div>
+            <div class="d-flex col-md-4 scopeHeaders2">
+                <p class="text-align-bottom m-0">{{project.address}}</p>
+            </div>
+            <div class=" d-flex col-md-3 scopeHeaders2">
+                <p class="text-align-bottom m-0">{{project.cost}}</p>
+            </div>
+            <div class=" d-flex col-md-1 scopeHeaders2">
+                <p class="text-align-bottom m-0">Button</p>
+            </div>
+            {{/each}}
+        </div>
+
+        {{!-- Modal To Create a Scope --}}
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header" style="background-color: gray">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="color:white; font-weight: bold">Add Scope</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="background-color: gray">
+                <form class="row" style="max-width: 800px">
+                    <div class="form-group upDownMargin">
+                        <label for="exampleInputEmail1" style="font-size: 20px; font-weight: bold">Name</label>
+                        <br>
+                        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter a Username" style="border: solid 2px black">  
+                    </div>
+                    <div class="form-group upDownMargin">
+                        <label for="exampleInputPassword1" style="font-size: 20px; font-weight: bold">Address</label>
+                        <input type="text" class="form-control" id="address" placeholder="Enter a Email" style="border: solid 2px black">
+                    </div>
+                    <div class="form-group upDownMargin">
+                        <label for="exampleInputPassword1" style="font-size: 20px; font-weight: bold">Cost</label>
+                        <input type="text" class="form-control" id="cost" placeholder="Please enter your First Name" style="border: solid 2px black">
+                    </div>
+                    <div class="form-group upDownMargin">
+                        <label for="exampleInputPassword1" style="font-size: 20px; font-weight: bold">Description</label>
+                        <input type="text" class="form-control" id="description" placeholder="Please enter your Last Name" style="border: solid 2px black">
+                    </div>
+                    <div class="form-group upDownMargin">
+                        <label for="exampleInputPassword1" style="font-size: 20px; font-weight: bold">Owner</label>
+                        <input type="text" class="form-control" id="owner" placeholder="Enter a Contact #" style="border: solid 2px black">
+                    </div>
+                    <div class="d-flex justify-content-end loginButton">
+                        <button type="submit" class="upDownMargin btn btn-primary" id="addProjectBtn">Submit</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="/js/project.js"></script>
