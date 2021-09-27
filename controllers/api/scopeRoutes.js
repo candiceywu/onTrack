@@ -26,6 +26,8 @@ router.get('/scope/:id', async (req, res) => {
     }
   });
   
+
+
   // PUT scopes
   router.put('/scope/:id', async (req, res) => {
     try {

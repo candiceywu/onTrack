@@ -43,7 +43,5 @@ const addNewScope = async (event) => {
     }
 }
 
-
-
 newScope.click(openScopeModal);
 addScopeBtn.addEventListener('click', addNewScope);

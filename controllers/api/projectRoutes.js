@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 
 
 // GET one project
-router.get('/project/:id', async (req, res) => {
+router.get('/projects/:id', async (req, res) => {
   // If the user is not logged in, redirect the user to the login page
   if (!req.session.loggedIn) {
     res.redirect('/login');

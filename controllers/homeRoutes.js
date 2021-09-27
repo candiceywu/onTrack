@@ -108,10 +108,16 @@ router.get('/projects/:id', async (req, res) => {
 });
 
 
-//scope
+//display scopes under individual project
 router.get('/scope', async (req, res) => {
   try {
+
+    let userData = await GeneralContractors.findByPk(req.session.user_id, {
+      include: {model: Scope}
+    });
+    let user = userData.get({ plain: true });
       res.render('scope', { 
+        user,
         isContractor: req.session.isContractor,
         userInfo: req.session.userInfo,
         logged_in: req.session.logged_in,
