@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { GeneralContractors, Owner } = require('../models');
+const { GeneralContractors, Owner, Project } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -18,12 +18,10 @@ router.get('/', async (req, res) => {
 
 
 router.get('/login', (req, res) => {
-  // if (req.session.logged_in) {
-  //   res.redirect('/');
-  //   return;
-  // }
+  
 
   res.render('login');
+  
 });
 
 router.get('/loginchoice', (req, res) => {
@@ -47,6 +45,70 @@ router.get('/gcsignup', (req, res) => {
   // }
 
   res.render('gcsignup');
+});
+
+// router.get('/projects', async (req, res) => {
+//   // if (req.session.logged_in) {
+//   //   res.redirect('/');
+//   //   return;
+//   // }
+
+//   const projectData = await Project.findAll();
+
+//   // Serialize data so the template can read it
+//   const projects = projectData.map((project) => project.get({ plain: true }));
+
+//   res.render('projects', { projects });
+// });
+
+router.get('/projects', async (req, res) => {
+  try {
+      
+      // const ownerData = await Owner.findOne({ where: { username: req.body.loginUser } }, {
+      //     include: [ {model: Project}]
+      // });
+
+      // const gcData = await GeneralContractors.findOne(
+      //     { where: { username: req.body.loginUser },
+      //     include: [ {model: Project}],
+      // });
+      
+      // console.log(gcData);
+
+      // if (!ownerData && !gcData) {
+      //     res
+      //         .status(400)
+      //         .json({ message: 'Incorrect email or password, please try again' });
+      //     return;
+      // }
+
+      // // if (ownerData){
+      // //     ownerData = ownerData.get({ plain: true})
+      // // } else {
+      // //     gcData = gcData.get({ plain:true})
+      // // }
+
+      // console.log(ownerData);
+      // console.log(gcData);
+
+      // if (ownerData) {
+      //     //res.render('projects', { ownerData })
+      //     res.json(ownerData);
+      // } else {
+          
+      //     res.json(gcData);
+      // } 
+      
+      res.render('projects', { 
+        isContractor: req.session.isContractor,
+        userInfo: req.session.userInfo,
+        logged_in: req.session.logged_in,
+       })
+      
+
+  } catch (err) {
+      res.status(400).json(err);
+  }
 });
 
 

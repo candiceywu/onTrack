@@ -4,9 +4,14 @@ const Project = require('./Project');
 const Scope = require('./Scope');
 
 
-GeneralContractors.hasOne(Project, {
-    foreignKey: ''
-})
+GeneralContractors.hasMany(Project, {
+    foreignKey: 'general_contractor_id',
+    onDelete: 'CASCADE'
+});
+
+Project.belongsTo(GeneralContractors, {
+    foreignKey: 'general_contractor_id'
+});
 
 
 

@@ -58,8 +58,14 @@ router.get('/project/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
+    console.log(req.body);
     const newProject = await Project.create({
-      ...req.body,
+      name: req.body.name,
+      address: req.body.address,
+      cost: req.body.cost,
+      description: req.body.description,
+      owner_id: req.body.owner,
+      //general_contractor_id: 1
       //user_id: 2  //req.session.user_id,
     });
 
