@@ -89,12 +89,15 @@ router.get('/projects', async (req, res) => {
 router.get('/projects/:id', async (req, res) => {
   try {
         console.log(req.params.id);
-      let userData = await Project.findByPk(req.params.id)
+      let userData = await Project.findByPk(req.params.id, {
+        include: {model: Scope}
+      });
       
       let user = userData.get({ plain: true});
       console.log(user);
       
-      
+      // res.json(userData);
+
       res.render('scope', { 
         user,
         isContractor: req.session.isContractor,
