@@ -112,4 +112,20 @@ router.get('/projects', async (req, res) => {
 });
 
 
+
+//scope
+router.get('/scope', async (req, res) => {
+  try {
+      res.render('scope', { 
+        isContractor: req.session.isContractor,
+        userInfo: req.session.userInfo,
+        logged_in: req.session.logged_in,
+       })
+    
+  } catch (err) {
+      res.status(400).json(err);
+  }
+});
+
+
 module.exports = router;

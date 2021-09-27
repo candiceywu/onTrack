@@ -1,4 +1,4 @@
-const myModal = $('#myModal');
+const myModal = $('#myScopeModal');
 const newScope = $('#newScope');
 const addScopeBtn = document.getElementById('addScopeBtn');
 
@@ -13,7 +13,7 @@ function openScopeModal (){
 const addNewScope = async (event) => {
     event.preventDefault();
 
-    // do we need to add picture
+    // do we need to add picture variable?
     
     let converter = false;
     let title = document.getElementById('title').value.trim();
@@ -25,7 +25,7 @@ const addNewScope = async (event) => {
     console.log(description);
     console.log(is_complete);
 
-    if (name && address && cost && description && owner){
+    if (title && description && is_complete){
         const response = await fetch ('/api/scope', {
             method: 'POST',
             body: JSON.stringify({title, description, is_complete, picture }),
