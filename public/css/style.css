@@ -61,16 +61,69 @@ body {
     font-weight: bold;
     min-width: 150px;
     width: 250px;
-    border-radius: 25px;
+    border-radius: 15px;
     border: solid 3px #333;
     background-color: white;
     margin: 5px;
+}
+
+.projectBorder {
+    border: solid 2px #333;
+    background-color: gray;
+    padding: 5px 0px 0px 0px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .btn {
     max-width: 100px;
     background-color: #333;
     border-color: #333;
+}
+
+.btn1 {
+    width: fit-content;
+    background-color: #333;
+    border-color: #333;
+    border: solid 2px white;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+    
+}
+
+.projectDivider1 {
+    margin: 0px;
+    margin-top: 5px;
+    border-top: solid 2px #333
+}
+
+.projectDivider2 {
+    margin: 0px;
+    border-top: solid 1px #333;
+    background-color: lightblue;
+}
+
+#h2 {
+    padding-left: 5px;
+}
+
+.projectHeaders1{
+    align-items: end;
+    justify-content: center;
+    border: solid 2px #333;
+    font-size: 16px;
+    color: white;
+    height: 35px;
+}
+
+.projectHeaders2{
+    align-items: center;
+    justify-content: center;
+    border: solid 1px #333;
+    font-size: 16px;
+    color: black;
+    height: 50px;
 }
 
 .marginDown {

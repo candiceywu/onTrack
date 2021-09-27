@@ -9,7 +9,7 @@
     },
     {
         "name": "30 Story High-Rise",
-        "address": "1256 RealWorld Lane",
+        "address": "1000 Fakeworld Lane",
         "cost": 1500000,
         "description": "This is the world we live in",
         "owner_id": 2,
@@ -17,7 +17,7 @@
     },
     {
         "name": "Sudwerk Restaurant",
-        "address": "1256 RealWorld Lane",
+        "address": "6251 WaynesWorld Lane",
         "cost": 3000000,
         "description": "This is the world we live in",
         "owner_id": 3,
