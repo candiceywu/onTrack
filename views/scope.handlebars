@@ -72,16 +72,18 @@
                             </div>
 
                             {{!-- check if this is correct for dropdown option --}}
+                            <div class="dropdown">
+                                <label for="progress" style="font-size: 20px; font-weight: bold">Progress</label>
+                                <select id="is_complete" name="dropdown_progress" style="border: solid 2px black">
+                                    <option value="Not started">Not started</option>
+                                    <option value="Delayed">Delayed</option>
+                                    <option value="25%">25%</option>
+                                    <option value="50%">50%</option>
+                                    <option value="75%">75%</option>
+                                    <option value="Complete">Complete</option>
+                                </select>
 
-                            <label for="progress">Progress</label>
-                            <select id="is_complete" name="dropdown_progress">
-                                <option value="Not started">Not started</option>
-                                <option value="Delayed">Delayed</option>
-                                <option value="25%">25%</option>
-                                <option value="50%">50%</option>
-                                <option value="75%">75%</option>
-                                <option value="Complete">Complete</option>
-                            </select>
+                            </div>
                             {{!-- <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="is_complete"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
