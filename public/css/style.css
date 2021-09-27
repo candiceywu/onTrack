@@ -130,6 +130,42 @@ body {
     margin-top: 100px;
 }
 
+
+
+.scopeDivider1 {
+    margin: 0px;
+    margin-top: 5px;
+    border-top: solid 2px #333
+}
+
+.scopeDivider2 {
+    margin: 0px;
+    border-top: solid 1px #333;
+    background-color: lightblue;
+}
+
+#h2 {
+    padding-left: 5px;
+}
+
+.scopeHeaders1{
+    align-items: end;
+    justify-content: center;
+    border: solid 2px #333;
+    font-size: 16px;
+    color: white;
+    height: 35px;
+}
+
+.scopeHeaders2{
+    align-items: center;
+    justify-content: center;
+    border: solid 1px #333;
+    font-size: 16px;
+    color: black;
+    height: 50px;
+}
+
 /* Focus Buttons */
 
 .focus:hover {
