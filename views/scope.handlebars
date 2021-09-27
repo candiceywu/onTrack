@@ -4,6 +4,7 @@
             <div class="col-md-10 align-text-bottom">
                 {{!-- not sure if this is correct for grabbing scope name --}}
                 <h2 class="m-0" id="h2">{{user.name}} | Scope Dashboard</h2>
+                <p style="visibility: hidden" id="userStoredId">{{user.id}}</p>
             </div>
             <div class="d-flex col-md-2 align-items-end justify-content-end">
                 <button class="btn1" id="newScope" style="margin-right: 5px">+ New Scope 🏠</button>
@@ -42,7 +43,7 @@
                 <p class="text-align-bottom m-0">Picture</p>
             </div>
             <div class=" d-flex col-md-1 scopeHeaders2">
-                <p class="text-align-bottom m-0">Button</p>
+                <p class="text-align-bottom m-0"></p>Button</p>
             </div>
             {{/each}}
         </div>
