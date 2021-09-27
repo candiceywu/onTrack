@@ -2,10 +2,11 @@ const myModal = $('#myScopeModal');
 const newScope = $('#newScope');
 const addScopeBtn = document.getElementById('addScopeBtn');
 const editScopeBtn = document.getElementById('edit-scope');
+const scopeItems = document.getElementById('scopeItems');
 
 
 
-function openScopeModal (){
+function openScopeModal() {
     $(function () {
         myModal.modal("show");
     });
@@ -15,7 +16,7 @@ const addNewScope = async (event) => {
     event.preventDefault();
 
     // do we need to add picture variable?
-    
+
     let converter = false;
     let title = document.getElementById('title').value.trim();
     let description = document.getElementById('description').value.trim();
@@ -26,17 +27,17 @@ const addNewScope = async (event) => {
     console.log(description);
     console.log(is_complete);
 
-    if (title && description && is_complete){
-        const response = await fetch ('/api/scope', {
+    if (title && description && is_complete) {
+        const response = await fetch('/api/scope', {
             method: 'POST',
-            body: JSON.stringify({title, description, is_complete,}),
-            headers: {'Content-Type': 'application/json'}
+            body: JSON.stringify({ title, description, is_complete, }),
+            headers: { 'Content-Type': 'application/json' }
         });
-        
+
         converter = true;
     }
 
-    if (converter){
+    if (converter) {
         $(function () {
             myModal.modal("hide");
             location.reload();
@@ -45,20 +46,24 @@ const addNewScope = async (event) => {
 }
 
 const editScope = async (event) => {
-    if (event.target.hasAttribute('edit-scope')) {
-      const id = event.target.getAttribute('edit-scope');
-  
-      const response = await fetch(`/api/scope/${id}`, {
-        method: 'PUT',
-      });
-  
-      if (response.ok) {
-        document.location.replace('/scope');
-      } else {
-        alert('Failed to modify scope.');
-      }
+    let element = event.target;
+    if (element.matches('button')) {
+        console.log(element.value)
     }
-  };
+    // if (event.target.hasAttribute('button')) {
+    //   const id = event.target.getAttribute('button');
+
+    // const response = await fetch(`/api/scope/${id}`, {
+    //     method: 'PUT',
+    // });
+
+    // if (response.ok) {
+    //     document.location.replace('/scope');
+    // } else {
+    //     alert('Failed to modify scope.');
+    // }
+};
+
 
 newScope.click(openScopeModal);
 addScopeBtn.addEventListener('click', addNewScope);
