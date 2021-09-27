@@ -2,6 +2,7 @@ const myModal = $('#myModal');
 const newProject = $('#newProject');
 const addProjectBtn = document.getElementById('addProjectBtn');
 let gcIdNumber = document.getElementById('idStore').textContent;
+let projectLayouts = document.getElementById('projectLayouts');
 //let gcUsername = document.getElementById('usernameStore').textContent
 console.log(gcIdNumber);
 
@@ -61,8 +62,6 @@ const addNewProject = async (event) => {
 
     location.reload();
 }
-
-
 
 newProject.click(openProjectModal);
 addProjectBtn.addEventListener('click', addNewProject);

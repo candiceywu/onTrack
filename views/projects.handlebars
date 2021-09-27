@@ -27,7 +27,7 @@
             </div>
         </div>
         
-        <div class="row projectDivider2">
+        <div class="row projectDivider2" id="projectLayouts">
             {{#each user.projects as |project|}}
             <div class="d-flex col-md-1 projectHeaders2">
                 <p class="text-align-bottom m-0">{{project.id}}</p>
@@ -42,7 +42,7 @@
                 <p class="text-align-bottom m-0">{{project.cost}}</p>
             </div>
             <div class=" d-flex col-md-1 projectHeaders2">
-                <p class="text-align-bottom m-0">Button</p>
+                <a href="/projects/{{project.id}}">VIEW</a>
             </div>
             {{/each}}
         </div>
