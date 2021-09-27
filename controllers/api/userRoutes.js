@@ -77,8 +77,10 @@ router.post('/', async (req, res) => {
 //user login
 router.get('/login', async (req, res) => {
     try {
-        const ownerData = await Owner.findOne({ where: { oEmail: req.body.email } });
-        const gcData = await GeneralContractors.findOne({ where: { gcEmail: req.body.email } });
+        console.log(req.body);
+        const ownerData = await Owner.findOne({ where: { username: req.body.loginUser } });
+        const gcData = await GeneralContractors.findOne({ where: { username: req.body.loginUser } });
+        console.log(gcData);
 
         if (!ownerData && !gcData) {
             res
@@ -87,15 +89,15 @@ router.get('/login', async (req, res) => {
             return;
         }
 
-        const ownerPassword = await ownerData.checkPassword(req.body.password);
-        const gcPassword = await gcData.checkPassword(req.body.password);
+        // const ownerPassword = await ownerData.checkPassword(req.body.password);
+        // const gcPassword = await gcData.checkPassword(req.body.password);
 
-        if (!ownerPassword && !gcPassword) {
-            res
-                .status(400)
-                .json({ message: 'Incorrect email or password, please try again' });
-            return;
-        }
+        // if (!ownerPassword && !gcPassword) {
+        //     res
+        //         .status(400)
+        //         .json({ message: 'Incorrect email or password, please try again' });
+        //     return;
+        // }
 
         console.log("Success. Logged In");
 
@@ -104,14 +106,14 @@ router.get('/login', async (req, res) => {
             if (ownerData) {
                 req.session.isContractor = false;
                 req.session.user_id = ownerData.id;
+                req.session.logged_in = true;
+                res.json({ user: ownerData, message: 'You are now logged in!' });
             } else {
                 req.session.isContractor = true;
                 req.session.user_id = gcData.id;
-            }
-
-            req.session.logged_in = true;
-
-            res.json({ user: userData, message: 'You are now logged in!' });
+                req.session.logged_in = true;
+                res.json({ user: gcData, message: 'You are now logged in!' });
+            }        
         });
 
     } catch (err) {

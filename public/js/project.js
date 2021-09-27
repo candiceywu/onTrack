@@ -13,6 +13,7 @@ function openProjectModal (){
 const addNewProject = async (event) => {
     event.preventDefault();
 
+    let converter = false;
     let name = document.getElementById('name').value.trim();
     let address = document.getElementById('address').value.trim();
     let cost = parseInt(document.getElementById('cost').value.trim());
@@ -30,6 +31,15 @@ const addNewProject = async (event) => {
             method: 'POST',
             body: JSON.stringify({name, address, cost, description, owner}),
             headers: {'Content-Type': 'application/json'}
+        });
+        
+        converter = true;
+    }
+
+    if (converter){
+        $(function () {
+            myModal.modal("hide");
+            location.reload();
         });
     }
 }

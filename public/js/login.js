@@ -2,6 +2,8 @@ const ownerBtn = document.getElementById('ownerBtn');
 const gcBtn = document.getElementById('gcBtn');
 const loginBtn = document.getElementById('loginBtn');
 
+
+
 function changeOwnerBtn(event){
     event.preventDefault();
     
@@ -15,9 +17,19 @@ function changeGcBtn(event){
 
 };
 
-const logIn = (event) => {
+const logIn = async (event) => {
     event.preventDefault();
     //ADD FUNCTIONALITY TO CHECK PASSWORDS & EMAIL MATCH//
+
+    const loginUser = document.getElementById('loginUser')
+
+    const response = await fetch('/api/users/login', {
+        method: 'GET',
+        body: JSON.stringify({loginUser}),
+        headers: {'Content-Type': 'application/json'}
+    })
+
+
 
     location.href = "/projects";
 }
