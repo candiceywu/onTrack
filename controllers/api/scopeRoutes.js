@@ -19,20 +19,19 @@ router.post('/', async (req, res) => {
 });
 
 // //GET all scopes on dashboard
-// router.get('/', async (req, res) => {
-//   try {
-//     // Get all scopes, sorted by name
-//     const scopeData = await User.findAll({
+router.get('/', async (req, res) => {
+  try {
+    // Get all scopes, sorted by name
+    const scopeData = await User.findAll();
+      // Serialize user data so templates can read it
+      const scopes = scopeData.map((scope) => scope.get({ plain: true }));
 
-//       // Serialize user data so templates can read it
-//       const scopes = scopeData.map((scope) => scope.get({ plain: true }));
-//     });
-//     // Pass serialized data into Handlebars.js template
-//     res.render('scope', { scopes });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    // Pass serialized data into Handlebars.js template
+    res.json(scopes);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // GET one scope
 //need to create an option for gc to edit a scope

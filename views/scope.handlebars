@@ -70,8 +70,19 @@
                                 <input type="text" class="form-control" id="address" placeholder="Enter the description"
                                     style="border: solid 2px black">
                             </div>
+
                             {{!-- check if this is correct for dropdown option --}}
-                            <div class="dropdown">
+
+                            <label for="progress">Progress</label>
+                            <select id="is_complete" name="dropdown_progress">
+                                <option value="Not started">Not started</option>
+                                <option value="Delayed">Delayed</option>
+                                <option value="25%">25%</option>
+                                <option value="50%">50%</option>
+                                <option value="75%">75%</option>
+                                <option value="Complete">Complete</option>
+                            </select>
+                            {{!-- <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="is_complete"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Progress
@@ -84,7 +95,7 @@
                                     <a class="dropdown-item" href="#">75%</a>
                                     <a class="dropdown-item" href="#">Complete</a>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="d-flex justify-content-end loginButton">
                                 <button type="submit" class="upDownMargin btn btn-primary"
                                     id="addScopeBtn">Submit</button>
