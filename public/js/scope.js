@@ -1,6 +1,7 @@
 const myModal = $('#myScopeModal');
 const newScope = $('#newScope');
 const addScopeBtn = document.getElementById('addScopeBtn');
+const editScopeBtn = document.getElementById('edit-scope');
 
 
 
@@ -43,5 +44,24 @@ const addNewScope = async (event) => {
     }
 }
 
+const editScope = async (event) => {
+    if (event.target.hasAttribute('edit-scope')) {
+      const id = event.target.getAttribute('edit-scope');
+  
+      const response = await fetch(`/api/scope/${id}`, {
+        method: 'PUT',
+      });
+  
+      if (response.ok) {
+        document.location.replace('/scope');
+      } else {
+        alert('Failed to modify scope.');
+      }
+    }
+  };
+
 newScope.click(openScopeModal);
 addScopeBtn.addEventListener('click', addNewScope);
+editScopeBtn.addEventListener('click', editScope);
+
+
