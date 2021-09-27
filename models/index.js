@@ -13,8 +13,14 @@ Project.belongsTo(GeneralContractors, {
     foreignKey: 'general_contractor_id'
 });
 
+Project.hasMany(Scope, {
+    foreignKey: 'project_id',
+    key: 'id'
+})
 
-
+Scope.belongsTo(Project, {
+    foreignKey: 'project_id'
+})
 
 module.exports = { 
     GeneralContractors,
