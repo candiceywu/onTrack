@@ -3,24 +3,28 @@
         "title": "concrete",
         "description": "Poured 5 yards in the basement pad",
         "is_complete": "true",
-        "picture": "https://www.thespruce.com/thmb/kOo5P2B71T91yxam_471-RQraow=/2124x1412/filters:fill(auto,1)/concrete_mix-692096736-5af8a50ea9d4f90036623585.jpg"
+        "picture": "https://www.thespruce.com/thmb/kOo5P2B71T91yxam_471-RQraow=/2124x1412/filters:fill(auto,1)/concrete_mix-692096736-5af8a50ea9d4f90036623585.jpg",
+        "project_id": 1
     },
     {
         "title": "framing",
         "description": "Framed west corner of house",
         "is_complete": "true",
-        "picture": "https://upload.wikimedia.org/wikipedia/commons/5/50/Wood-framed_house.jpg"
+        "picture": "https://upload.wikimedia.org/wikipedia/commons/5/50/Wood-framed_house.jpg",
+        "project_id": 1
     },
     {
         "title": "drywall",
         "description": "Drywalled house",
         "is_complete": "true",
-        "picture": "https://www.superiorinsulationnj.com/wp-content/uploads/2018/05/servicesdrywall.jpg"
+        "picture": "https://www.superiorinsulationnj.com/wp-content/uploads/2018/05/servicesdrywall.jpg",
+        "project_id": 1
     },
     {
         "title": "paint",
         "description": "Painted the living room",
         "is_complete": "true",
-        "picture": "https://c8.alamy.com/comp/MAK6EA/new-home-construction-interior-living-room-MAK6EA.jpg"
+        "picture": "https://c8.alamy.com/comp/MAK6EA/new-home-construction-interior-living-room-MAK6EA.jpg",
+        "project_id": 1
     }
 ]

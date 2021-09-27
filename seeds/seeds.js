@@ -1,5 +1,5 @@
 const sequelize = require('../config/connection');
-const { Owner, GeneralContractors, Project } = require('../models');
+const { Owner, GeneralContractors, Project, Scope } = require('../models');
 
 const ownerData = require('./ownerData.json');
 const gcData = require('./gcData.json')
