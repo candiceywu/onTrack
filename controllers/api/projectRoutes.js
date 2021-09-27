@@ -65,8 +65,7 @@ router.post('/', async (req, res) => {
       cost: req.body.cost,
       description: req.body.description,
       owner_id: req.body.owner,
-      //general_contractor_id: 1
-      //user_id: 2  //req.session.user_id,
+      general_contractor_id: req.body.gcIdNumber,
     });
 
     res.status(200).json(newProject);

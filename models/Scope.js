@@ -26,13 +26,17 @@ Scope.init(
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-
-        // author_id: {
-        //     type: DataTypes
-        // },
-
+        
         picture: {
             type: DataTypes.STRING(1234),
+        },
+
+        project_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'project',
+                key: 'id'
+            }
         }
     },
     {
