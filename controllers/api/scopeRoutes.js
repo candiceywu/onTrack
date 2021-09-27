@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Scope } = require('../../models')
 
 
-//GET all scopes
+//GET all scopes 
 router.get('/', async (req, res) => {
   try {
     // Get all scopes, sorted by name
@@ -75,6 +75,8 @@ router.get('/scope/:id', async (req, res) => {
     }
   });
   
+
+
   // PUT scopes
   router.put('/scope/:id', async (req, res) => {
     try {
