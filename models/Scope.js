@@ -23,7 +23,7 @@ Scope.init(
         },
 
         is_complete: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         
