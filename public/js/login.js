@@ -21,7 +21,8 @@ const logIn = async (event) => {
     event.preventDefault();
     //ADD FUNCTIONALITY TO CHECK PASSWORDS & EMAIL MATCH//
 
-    const loginUser = document.getElementById('loginUser')
+    const loginUser = document.getElementById('loginUser').value.trim();
+    console.log(loginUser);
 
     const response = await fetch('/api/users/login', {
         method: 'POST',
