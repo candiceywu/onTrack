@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     // Get all scopes, sorted by name
-    const scopeData = await User.findAll();
+    const scopeData = await Scope.findAll();
       // Serialize user data so templates can read it
       const scopes = scopeData.map((scope) => scope.get({ plain: true }));
 
