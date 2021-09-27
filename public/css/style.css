@@ -130,7 +130,13 @@ body {
     margin-top: 100px;
 }
 
-
+.scopeBorder {
+    border: solid 2px #333;
+    background-color: gray;
+    padding: 5px 0px 0px 0px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
 
 .scopeDivider1 {
     margin: 0px;
