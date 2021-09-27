@@ -24,7 +24,7 @@ const logIn = async (event) => {
     const loginUser = document.getElementById('loginUser')
 
     const response = await fetch('/api/users/login', {
-        method: 'GET',
+        method: 'POST',
         body: JSON.stringify({loginUser}),
         headers: {'Content-Type': 'application/json'}
     })

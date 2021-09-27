@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { GeneralContractors, Owner } = require('../../models')
+const { GeneralContractors, Owner, Project } = require('../../models')
 
 
 // Get All Owners //
@@ -75,51 +75,67 @@ router.post('/', async (req, res) => {
 
 
 //user login
-router.get('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
     try {
-        console.log(req.body);
-        const ownerData = await Owner.findOne({ where: { username: req.body.loginUser } });
-        const gcData = await GeneralContractors.findOne({ where: { username: req.body.loginUser } });
+        
+        const ownerData = await Owner.findOne({ where: { username: req.body.loginUser } }, {
+            include: [ {model: Project}]
+        });
+  
+        const gcData = await GeneralContractors.findOne(
+            { where: { username: req.body.loginUser },
+            include: [ {model: Project}],
+        });
+        
         console.log(gcData);
-
+  
         if (!ownerData && !gcData) {
             res
                 .status(400)
                 .json({ message: 'Incorrect email or password, please try again' });
             return;
         }
-
+  
+        // if (ownerData){
+        //     ownerData = ownerData.get({ plain: true})
+        // } else {
+        //     gcData = gcData.get({ plain:true})
+        // }
+        // console.log(ownerData);
+        // console.log(gcData);
+  
         // const ownerPassword = await ownerData.checkPassword(req.body.password);
         // const gcPassword = await gcData.checkPassword(req.body.password);
-
+  
         // if (!ownerPassword && !gcPassword) {
         //     res
         //         .status(400)
         //         .json({ message: 'Incorrect email or password, please try again' });
         //     return;
         // }
-
+  
         console.log("Success. Logged In");
-
+  
         req.session.save(() => {
-
+  
             if (ownerData) {
                 req.session.isContractor = false;
-                req.session.user_id = ownerData.id;
+                req.session.userInfo = ownerData;
                 req.session.logged_in = true;
                 res.json({ user: ownerData, message: 'You are now logged in!' });
             } else {
                 req.session.isContractor = true;
-                req.session.user_id = gcData.id;
+                req.session.userInfo = gcData.generalContractor;
                 req.session.logged_in = true;
                 res.json({ user: gcData, message: 'You are now logged in!' });
-            }        
+            } 
+                   
         });
-
+  
     } catch (err) {
         res.status(400).json(err);
     }
-});
+  });
 
 
 //user logout
