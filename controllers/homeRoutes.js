@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { GeneralContractors, Owner, Project } = require('../models');
+const { GeneralContractors, Owner, Project, Scope } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -61,6 +61,7 @@ router.get('/gcsignup', (req, res) => {
 //   res.render('projects', { projects });
 // });
 
+//Renders All Projects for Specific User
 router.get('/projects', async (req, res) => {
   try {
         
@@ -70,6 +71,7 @@ router.get('/projects', async (req, res) => {
       
       let user = userData.get({ plain: true});
       console.log(user);
+      
       
       res.render('projects', { 
         user,
@@ -83,6 +85,27 @@ router.get('/projects', async (req, res) => {
   }
 });
 
+//Renders Single Project with all Scope Items
+router.get('/projects/:id', async (req, res) => {
+  try {
+        console.log(req.params.id);
+      let userData = await Project.findByPk(req.params.id)
+      
+      let user = userData.get({ plain: true});
+      console.log(user);
+      
+      
+      res.render('scope', { 
+        user,
+        isContractor: req.session.isContractor,
+        logged_in: req.session.logged_in,
+       })
+      
+
+  } catch (err) {
+      res.status(400).json(err);
+  }
+});
 
 
 //display scopes under individual project
