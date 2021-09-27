@@ -4,6 +4,7 @@ const { Owner, GeneralContractors, Project } = require('../models');
 const ownerData = require('./ownerData.json');
 const gcData = require('./gcData.json')
 const projectData = require('./projectData.json');
+const scopeData = require('./scope.json')
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -19,6 +20,11 @@ const seedDatabase = async () => {
   });
 
   const projectSeed = await Project.bulkCreate(projectData, {
+    individualHooks: true,
+    returning: true,
+  });
+
+  const scopeSeed = await Scope.bulkCreate(scopeData, {
     individualHooks: true,
     returning: true,
   });
