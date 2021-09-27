@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
 
 // GET one scope
 //need to create an option for gc to edit a scope
-router.get('/scope/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   // If the user is not logged in, redirect the user to the login page
   if (!req.session.loggedIn) {
     res.redirect('/login');
@@ -44,7 +44,7 @@ router.get('/scope/:id', async (req, res) => {
     try {
       const scopeData = await Scope.findByPk(req.params.id);
       const scope = scopeData.get({ plain: true });
-      res.render('scope', {
+      res.render('scope/:id', {
         scope,
         isContractor: req.session.isContractor
       });
@@ -58,7 +58,7 @@ router.get('/scope/:id', async (req, res) => {
 
 
 // PUT scopes
-router.put('/scope/:id', async (req, res) => {
+router.put('/id', async (req, res) => {
   try {
     const gcData = await Scope.update(req.body, {
       where: {

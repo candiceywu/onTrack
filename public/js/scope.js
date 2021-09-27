@@ -1,10 +1,10 @@
 const myModal = $('#myScopeModal');
 const newScope = $('#newScope');
 const addScopeBtn = document.getElementById('addScopeBtn');
-const editScopeBtn = document.getElementById('edit-scope');
 const scopeItems = document.getElementById('scopeItems');
-
-
+let editTitle = document.getElementById('edit-title'); 
+let editDescription = document.getElementById('edit-description');
+let editIsComplete = document.getElementById('edit-is_complete'); 
 
 function openScopeModal() {
     $(function () {
@@ -67,6 +67,6 @@ const editScope = async (event) => {
 
 newScope.click(openScopeModal);
 addScopeBtn.addEventListener('click', addNewScope);
-editScopeBtn.addEventListener('click', editScope);
+scopeItems.addEventListener('click', editScope);
 
 
