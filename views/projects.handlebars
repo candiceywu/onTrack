@@ -6,7 +6,9 @@
                 <p id="idStore" style="visibility: hidden">{{user.id}}</p>
             </div>
             <div class="d-flex col-md-2 align-items-end justify-content-end">
+                {{#if isContractor}}
                 <button class="btn1" id="newProject" style="margin-right: 5px">+ New Project 🏠</button>
+                {{/if}}
             </div>
         </div>
         <div class="row projectDivider1">
@@ -62,7 +64,7 @@
                     <div class="form-group upDownMargin">
                         <label for="exampleInputEmail1" style="font-size: 20px; font-weight: bold">Name</label>
                         <br>
-                        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter a Username" style="border: solid 2px black">  
+                        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter a project name" style="border: solid 2px black">  
                     </div>
                     <div class="form-group upDownMargin">
                         <label for="exampleInputPassword1" style="font-size: 20px; font-weight: bold">Address</label>
@@ -70,15 +72,15 @@
                     </div>
                     <div class="form-group upDownMargin">
                         <label for="exampleInputPassword1" style="font-size: 20px; font-weight: bold">Cost</label>
-                        <input type="text" class="form-control" id="cost" placeholder="Please enter your First Name" style="border: solid 2px black">
+                        <input type="text" class="form-control" id="cost" placeholder="Enter the cost" style="border: solid 2px black">
                     </div>
                     <div class="form-group upDownMargin">
                         <label for="exampleInputPassword1" style="font-size: 20px; font-weight: bold">Description</label>
-                        <input type="text" class="form-control" id="description" placeholder="Please enter your Last Name" style="border: solid 2px black">
+                        <input type="text" class="form-control" id="description" placeholder="Enter a description" style="border: solid 2px black">
                     </div>
                     <div class="form-group upDownMargin">
                         <label for="exampleInputPassword1" style="font-size: 20px; font-weight: bold">Owner</label>
-                        <input type="text" class="form-control" id="owner" placeholder="Enter a Contact #" style="border: solid 2px black">
+                        <input type="text" class="form-control" id="owner" placeholder="Enter owner ID" style="border: solid 2px black">
                     </div>
                     <div class="d-flex justify-content-end loginButton">
                         <button type="submit" class="upDownMargin btn btn-primary" id="addProjectBtn">Submit</button>
