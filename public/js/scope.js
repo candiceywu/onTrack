@@ -48,3 +48,4 @@ newScope.click(openScopeModal);
 addScopeBtn.addEventListener('click', addNewScope);
 
 
+
