@@ -1,9 +1,6 @@
 const myModal = $('#myScopeModal');
 const newScope = $('#newScope');
 const addScopeBtn = document.getElementById('addScopeBtn');
-;
-
-
 
 
 function openScopeModal() {
@@ -49,6 +46,5 @@ const addNewScope = async (event) => {
 
 newScope.click(openScopeModal);
 addScopeBtn.addEventListener('click', addNewScope);
-
 
 
