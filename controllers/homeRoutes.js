@@ -110,6 +110,29 @@ router.get('/projects/:id', async (req, res) => {
   }
 });
 
+// GET one scope
+//need to create an option for gc to edit a scope
+router.get('/project/scope/:id', async (req, res) => {
+  // If the user is logged in, allow user to view the scope
+  try {
+    const scopeData = await Scope.findByPk(req.params.id, {
+      include: {model: Project}
+    });
+    const scope = scopeData.get({ plain: true });
+    
+
+    //res.json(scope);
+    res.render('scopeId', {
+      scope,
+      isContractor: req.session.isContractor
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+
+});
+
 
 //display scopes under individual project
 router.get('/scope', async (req, res) => {

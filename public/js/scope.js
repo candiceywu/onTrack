@@ -1,6 +1,8 @@
 const myModal = $('#myScopeModal');
 const newScope = $('#newScope');
 const addScopeBtn = document.getElementById('addScopeBtn');
+let projectStoreId = document.getElementById('projectStoredId').textContent;
+
 
 
 function openScopeModal() {
@@ -17,7 +19,9 @@ const addNewScope = async (event) => {
     let converter = false;
     let title = document.getElementById('title').value.trim();
     let description = document.getElementById('description').value.trim();
-    let is_complete = parseInt(document.getElementById('is_complete').value.trim());
+    let is_complete = document.getElementById('is_complete').value.trim();
+    projectStoreId = parseInt(projectStoreId);
+    
     //let picture = document.getElementById('picture').value.trim();
 
     console.log(title);
@@ -27,7 +31,7 @@ const addNewScope = async (event) => {
     if (title && description && is_complete) {
         const response = await fetch('/api/scope', {
             method: 'POST',
-            body: JSON.stringify({ title, description, is_complete, }),
+            body: JSON.stringify({ title, description, is_complete, projectStoreId}),
             headers: { 'Content-Type': 'application/json' }
         });
 

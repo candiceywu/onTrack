@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Scope } = require('../../models')
+const { Scope, Project } = require('../../models')
 
 
 //POST route for new scope
@@ -10,12 +10,59 @@ router.post('/', async (req, res) => {
       title: req.body.title,
       description: req.body.description,
       is_complete: req.body.is_complete,
+      project_id: req.body.projectStoreId,
     });
 
     res.status(200).json(newScope);
   } catch (err) {
     res.status(400).json(err);
   }
+});
+
+// PUT scopes
+router.put('/:id', async (req, res) => {
+  try {
+    console.log(req.body);
+    const gcData = await Scope.update(
+      { 
+        title: req.body.editTitle,
+        description: req.body.editDescription,
+        is_complete: req.body.status,
+      },
+      {
+        where: {
+        id: req.params.id
+      },
+      // individualHooks: true
+    });
+    if (!gcData) {
+      res.status(404).json({ message: 'Sorry, you can\'t modify this data.' });
+      return;
+    } res.status(200).json(gcData);
+  } catch (err) {
+    res.status(500).json(err)
+  };
+});
+
+
+//Delete Scopes
+
+router.delete('/:id', async (req, res) => {
+  try {
+
+    const gcData = await Scope.destroy(
+      {
+        where: { 
+          id: req.params.id
+        },
+    });
+    if (!gcData) {
+      res.status(404).json({ message: 'Sorry, you can\'t modify this data.' });
+      return;
+    } res.status(200).json(gcData);
+  } catch (err) {
+    res.status(500).json(err)
+  };
 });
 
 // //GET all scopes on dashboard
@@ -33,70 +80,29 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET one scope
-//need to create an option for gc to edit a scope
-router.get('/:id', async (req, res) => {
-    // If the user is logged in, allow user to view the scope
-    try {
-      const scopeData = await Scope.findByPk(req.params.id);
-      const scope = scopeData.get({ plain: true });
-      console.log(scope);
-      res.render('scopeId', {
-        scope,
-        isContractor: req.session.isContractor
-      });
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
+// // GET one scope
+// //need to create an option for gc to edit a scope
+// router.get('/:id', async (req, res) => {
+//     // If the user is logged in, allow user to view the scope
+//     try {
+//       const scopeData = await Scope.findByPk(req.params.id, {
+//         include: {model: Project}
+//       });
+//       const scope = scopeData.get({ plain: true });
+      
+
+//       //res.json(scope);
+//       res.render('scopeId', {
+//         scope,
+//         isContractor: req.session.isContractor
+//       });
+//     } catch (err) {
+//       console.log(err);
+//       res.status(500).json(err);
+//     }
   
-});
+// });
 
-
-
-// PUT scopes
-router.put('/id', async (req, res) => {
-  try {
-    const gcData = await Scope.update(
-      {
-        ...req.body, 
-        title: req.body.title,
-        description: req.body.description,
-        is_complete: req.body.is_complete,
-      },
-      {
-        where: {
-        id: req.params.id
-      },
-      // individualHooks: true
-    });
-    if (!gcData[0]) {
-      res.status(404).json({ message: 'Sorry, you can\'t modify this data.' });
-      return;
-    } res.status(200).json(gcData);
-  } catch (err) {
-    res.status(500).json(err)
-  };
-});
-
-router.put('/:id', async (req, res) => {
-  try {
-      const userData = await Post.update(
-          {
-              ...req.body,
-              titel: req.body.title,
-              body: req.body.body,
-          },
-          {
-              where: {
-                  id: req.params.id
-              },
-          })
-      res.status(200).json(userData);
-  } catch (err) {
-      res.status(400).json(err);
-  }
-});
 
 
 module.exports = router;

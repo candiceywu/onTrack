@@ -34,6 +34,8 @@ const submitOForm = async (event) => {
     // } else {
     //     alert('Failed to Sign Up');
     // }
+
+    location.href = "/login";
 }
 
 const submitGCForm = async (event) => {
@@ -65,7 +67,13 @@ const submitGCForm = async (event) => {
     // } else {
     //     alert('Failed to Sign Up');
     // }
+
+    location.href = "/login"
 }
 
-submitOBtn.addEventListener('click', submitOForm);
-submitGCBtn.addEventListener('click', submitGCForm);
+if (submitOBtn){
+    submitOBtn.addEventListener('click', submitOForm);
+} else {
+    submitGCBtn.addEventListener('click', submitGCForm);
+}
+

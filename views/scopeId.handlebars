@@ -2,9 +2,9 @@
     <div class="container d-flex justify-content-center marginDown">
         <form class="formStyles row" style="max-width: 800px">
             <div class="form-group upDownMargin">
-                <label for="exampleInputEmail1" style="font-size: 20px; font-weight: bold">Title</label>
-                <p style="visibility: hidden" id="storedScopeId">{{scope.id}}</p>
-                <br>
+                <label for="exampleInputEmail1" style="font-size: 20px; font-weight: bold">Edit Scope Item Below:</label>
+                <p style="visibility: hidden; margin: 0px" id="storedScopeId">{{scope.id}}</p>
+                <p style="visibility: hidden; margin: 0px" id="storedProjectId">{{scope.project_id}}</p>
                 <input type="text" class="form-control" id="edit-title" value="{{scope.title}}" aria-describedby="emailHelp"
                     placeholder="Enter the scope title" style="border: solid 2px black">
             </div>
@@ -25,6 +25,7 @@
                 </select>
             </div>
             <div class="d-flex justify-content-end loginButton">
+                <button type="submit" class="upDownMargin btn btn-primary" id="deleteScopeBtn">Delete</button>
                 <button type="submit" class="upDownMargin btn btn-primary" id="editScopeBtn">Submit</button>
             </div>
         </form>
@@ -76,3 +77,5 @@
         </div>
     </div>
 </div> --}}
+
+<script src="/js/scopeId.js"></script>
