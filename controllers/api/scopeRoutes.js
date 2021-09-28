@@ -10,6 +10,7 @@ router.post('/', async (req, res) => {
       title: req.body.title,
       description: req.body.description,
       is_complete: req.body.is_complete,
+      picture: req.body.picture,
       project_id: req.body.projectStoreId,
     });
 
@@ -28,6 +29,7 @@ router.put('/:id', async (req, res) => {
         title: req.body.editTitle,
         description: req.body.editDescription,
         is_complete: req.body.status,
+        picture: req.body.picture,
       },
       {
         where: {
