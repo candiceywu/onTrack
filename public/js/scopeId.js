@@ -13,7 +13,7 @@ const editScope = async () => {
         headers: {'Content-Type': 'application/json'}
     })
 
-    window.location.assign('/scope')
+    window.location.assign('/projects')
 
 }
 
