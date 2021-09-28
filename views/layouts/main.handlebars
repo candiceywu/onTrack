@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>onTrack</title>
-    
-    <!-- CSS only -->
-    {{!-- Boostrap CSS --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>onTrack</title>
+
+  <!-- CSS only -->
+  {{!-- Boostrap CSS --}}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css">
 
 </head>
-<body>
-     <header class="display-flex justify-space-between align-center p-2">
 
-    <!-- Only display the logout button if the user is logged in -->
-    {{#if logged_in}}
-    <nav>
-      <button class="btn" id="logout">logout</button>
-    </nav>
-    {{/if}}
+<body>
+  <header class="display-flex justify-space-between align-center p-2">
   </header>
 
-    <div class="navbar" id="navPadding">
-        <div>
-            <h1 style="color: white"><a href="/"><u>onTrack</u>🏠</a></h1>
-        </div>
-        <div>
-            <a href="/login">Login</a>
-            <a href="/loginchoice">Sign-Up</a>
-        </div>
+  <div class="navbar" id="navPadding">
+    <div>
+      <h1 style="color: white"><a href="/"><u>onTrack</u>🏠</a></h1>
     </div>
 
-    {{{body}}}
+    <!-- Only display the logout and dashboard (projects page) if the user is logged in -->
+    {{#if logged_in}}
+    <div>
+      <a href="/logout" id="logout">Logout</a>
+      <a href="/projects" id="dashboard">Dashboard</a>
+    </div>
+    {{else}}
+    <div>
+      <a href="/login">Login</a>
+      <a href="/loginchoice">Sign-Up</a>
+    </div>
+    {{/if}}
+  </div>
 
-{{!-- <script src="/js/script.js"></script> --}}
+  {{{body}}}
 
-  <!-- Only include the logout script if the user is logged in -->
+
+  <!-- Only include the logout and project script if the user is logged in -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
+  <script src="/js/project.js"></script>
   {{/if}}
 </body>
+
 </html>
