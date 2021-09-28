@@ -44,6 +44,7 @@ router.put('/:id', async (req, res) => {
   };
 });
 
+
 //Delete Scopes
 
 router.delete('/:id', async (req, res) => {
