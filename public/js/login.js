@@ -30,9 +30,9 @@ const logIn = async (event) => {
         body: JSON.stringify({loginUser, password}),
         headers: {'Content-Type': 'application/json'}
     })
-
+        
     if(response.ok){
-        location.href = "/projects";
+        location.href = `/projects`;
     } else {
         alert("Username or Password Entered Incorrectly");
     }
