@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
         let userData;
         let isContractor = false;
 
-            console.log(req.body);
+        console.log(req.body);
         if (req.body.gcLicense) {
             userData = await GeneralContractors.create({
                 username: req.body.gcUsername,
@@ -59,11 +59,11 @@ router.post('/', async (req, res) => {
 
         req.session.save(() => {
 
-          
-        req.session.isContractor = isContractor;
-        req.session.user_id = userData.id;
 
-            
+            req.session.isContractor = isContractor;
+            req.session.user_id = userData.id;
+
+
             res.status(200).json(userData);
         });
     } catch (err) {
@@ -77,25 +77,38 @@ router.post('/', async (req, res) => {
 //user login
 router.post('/login', async (req, res) => {
     try {
-        
+        let validPassword;
         const ownerData = await Owner.findOne({ where: { username: req.body.loginUser } }, {
-            include: [ {model: Project}]
+            include: [{ model: Project }]
         });
-  
+
         const gcData = await GeneralContractors.findOne(
-            { where: { username: req.body.loginUser },
-            include: [ {model: Project}],
-        });
-        
+            {
+                where: { username: req.body.loginUser },
+                include: [{ model: Project }],
+            });
+
         console.log(gcData);
-  
+
         if (!ownerData && !gcData) {
             res
                 .status(400)
                 .json({ message: 'Incorrect email or password, please try again' });
             return;
         }
-  
+
+        if (ownerData) {
+            validPassword = ownerData.checkPassword(req.body.password);
+        } else {
+            validPassword = await gcData.checkPassword(req.body.password);
+        }
+        if (!validPassword) {
+            res
+                .status(400)
+                .json({ message: 'Incorrect email or password, please try again' });
+            return;
+        }
+
         // if (ownerData){
         //     ownerData = ownerData.get({ plain: true})
         // } else {
@@ -103,21 +116,21 @@ router.post('/login', async (req, res) => {
         // }
         // console.log(ownerData);
         // console.log(gcData);
-  
+
         // const ownerPassword = await ownerData.checkPassword(req.body.password);
         // const gcPassword = await gcData.checkPassword(req.body.password);
-  
+
         // if (!ownerPassword && !gcPassword) {
         //     res
         //         .status(400)
         //         .json({ message: 'Incorrect email or password, please try again' });
         //     return;
         // }
-  
+
         console.log("Success. Logged In");
-  
+
         req.session.save(() => {
-  
+
             if (ownerData) {
                 req.session.isContractor = false;
                 req.session.user_id = ownerData.id;
@@ -128,14 +141,14 @@ router.post('/login', async (req, res) => {
                 req.session.user_id = gcData.id;
                 req.session.logged_in = true;
                 res.json({ user: gcData, message: 'You are now logged in!' });
-            } 
-                   
+            }
+
         });
-  
+
     } catch (err) {
         res.status(400).json(err);
     }
-  });
+});
 
 
 //user logout
