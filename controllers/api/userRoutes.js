@@ -98,10 +98,13 @@ router.post('/login', async (req, res) => {
         }
 
         if (ownerData) {
-            validPassword = ownerData.checkPassword(req.body.password);
+            validPassword = await ownerData.checkPassword(req.body.password);
         } else {
             validPassword = await gcData.checkPassword(req.body.password);
+            console.log("error")
+            console.log(validPassword);
         }
+
         if (!validPassword) {
             res
                 .status(400)

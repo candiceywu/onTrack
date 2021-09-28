@@ -21,18 +21,23 @@ const logIn = async (event) => {
     event.preventDefault();
     //ADD FUNCTIONALITY TO CHECK PASSWORDS & EMAIL MATCH//
 
-    const loginUser = document.getElementById('loginUser').value.trim();
+    let loginUser = document.getElementById('loginUser').value.trim();
+    let password = document.getElementById('inputPassword').value.trim();
     console.log(loginUser);
 
     const response = await fetch('/api/users/login', {
         method: 'POST',
-        body: JSON.stringify({loginUser}),
+        body: JSON.stringify({loginUser, password}),
         headers: {'Content-Type': 'application/json'}
     })
 
+    if(response.ok){
+        location.href = "/projects";
+    } else {
+        alert("Username or Password Entered Incorrectly");
+    }
 
-
-    location.href = "/projects";
+    
 }
 
 if (loginBtn){
