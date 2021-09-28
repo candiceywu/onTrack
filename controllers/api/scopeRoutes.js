@@ -57,11 +57,18 @@ router.get('/:id', async (req, res) => {
 // PUT scopes
 router.put('/id', async (req, res) => {
   try {
-    const gcData = await Scope.update(req.body, {
-      where: {
+    const gcData = await Scope.update(
+      {
+        ...req.body, 
+        title: req.body.title,
+        description: req.body.description,
+        is_complete: req.body.is_complete,
+      },
+      {
+        where: {
         id: req.params.id
       },
-      individualHooks: true
+      // individualHooks: true
     });
     if (!gcData[0]) {
       res.status(404).json({ message: 'Sorry, you can\'t modify this data.' });
@@ -71,5 +78,7 @@ router.put('/id', async (req, res) => {
     res.status(500).json(err)
   };
 });
+
+
 
 module.exports = router;
