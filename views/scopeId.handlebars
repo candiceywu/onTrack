@@ -3,6 +3,7 @@
         <form class="formStyles row" style="max-width: 800px">
             <div class="form-group upDownMargin">
                 <label for="exampleInputEmail1" style="font-size: 20px; font-weight: bold">Title</label>
+                <p style="visibility: hidden" id="storedScopeId">{{scope.id}}</p>
                 <br>
                 <input type="text" class="form-control" id="edit-title" value="{{scope.title}}" aria-describedby="emailHelp"
                     placeholder="Enter the scope title" style="border: solid 2px black">
@@ -14,7 +15,7 @@
             </div>
             <div class="dropdown">
                 <label for="progress" style="font-size: 20px; font-weight: bold">Progress</label>
-                <select id="edit-is_complete" name="dropdown_progress" style="border: solid 2px black" value="{{scope.is_complete}}">
+                <select id="edit-is_complete" name="dropdown_progress" style="border: solid 2px black">
                     <option value="Not started">Not started</option>
                     <option value="Delayed">Delayed</option>
                     <option value="25%">25%</option>
