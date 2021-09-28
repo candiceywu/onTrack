@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Scope } = require('../../models')
+const { Scope, Project } = require('../../models')
 
 
 //POST route for new scope
@@ -10,6 +10,7 @@ router.post('/', async (req, res) => {
       title: req.body.title,
       description: req.body.description,
       is_complete: req.body.is_complete,
+      project_id: req.body.projectStoreId,
     });
 
     res.status(200).json(newScope);
@@ -38,9 +39,13 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     // If the user is logged in, allow user to view the scope
     try {
-      const scopeData = await Scope.findByPk(req.params.id);
+      const scopeData = await Scope.findByPk(req.params.id, {
+        include: {model: Project}
+      });
       const scope = scopeData.get({ plain: true });
-      console.log(scope);
+      
+
+      //res.json(scope);
       res.render('scopeId', {
         scope,
         isContractor: req.session.isContractor
@@ -55,14 +60,14 @@ router.get('/:id', async (req, res) => {
 
 
 // PUT scopes
-router.put('/id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
+    console.log(req.body);
     const gcData = await Scope.update(
-      {
-        ...req.body, 
-        title: req.body.title,
-        description: req.body.description,
-        is_complete: req.body.is_complete,
+      { 
+        title: req.body.editTitle,
+        description: req.body.editDescription,
+        is_complete: req.body.status,
       },
       {
         where: {
@@ -70,7 +75,27 @@ router.put('/id', async (req, res) => {
       },
       // individualHooks: true
     });
-    if (!gcData[0]) {
+    if (!gcData) {
+      res.status(404).json({ message: 'Sorry, you can\'t modify this data.' });
+      return;
+    } res.status(200).json(gcData);
+  } catch (err) {
+    res.status(500).json(err)
+  };
+});
+
+//Delete Scopes
+
+router.delete('/:id', async (req, res) => {
+  try {
+
+    const gcData = await Scope.destroy(
+      {
+        where: { 
+          id: req.params.id
+        },
+    });
+    if (!gcData) {
       res.status(404).json({ message: 'Sorry, you can\'t modify this data.' });
       return;
     } res.status(200).json(gcData);
