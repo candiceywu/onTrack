@@ -33,7 +33,7 @@ const deleteScope = async (event) => {
         })
     }
     
-
+    location.reload();
     location.href = `/projects/${storedProjectId}`
 }
 
