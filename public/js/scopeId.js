@@ -2,6 +2,18 @@ let storedScopeId = document.getElementById('storedScopeId').textContent;
 let storedProjectId = document.getElementById('storedProjectId').textContent;
 const editScopeBtn = document.getElementById('editScopeBtn');
 const deleteScopeBtn = document.getElementById('deleteScopeBtn');
+let picture;
+var myWidget = cloudinary.createUploadWidget({
+    
+
+    cloudName: 'jscott1570', 
+    uploadPreset: 'vcicpqhn'}, (error, result) => { 
+      if (!error && result && result.event === "success") { 
+        console.log('Done! Here is the image info: ', result.info); 
+        picture = result.info.secure_url;
+      }
+    }
+  )
 
 console.log("hello");
 const editScope = async (event) => {
@@ -16,7 +28,7 @@ const editScope = async (event) => {
 
     const scopeChange = await fetch (`/api/scope/${storedScopeId}`, { 
         method: "PUT",
-        body: JSON.stringify({ editTitle, editDescription, status}),
+        body: JSON.stringify({ editTitle, editDescription, status, picture}),
         headers: {'Content-Type': 'application/json'}
     })
 
@@ -36,6 +48,12 @@ const deleteScope = async (event) => {
     location.reload();
     location.href = `/projects/${storedProjectId}`
 }
+
+document.getElementById("upload_widget").addEventListener("click", function(event){
+    event.preventDefault();
+    myWidget.open();
+  }, false);
+
 
 editScopeBtn.addEventListener('click', editScope);
 deleteScopeBtn.addEventListener('click', deleteScope)

@@ -29,6 +29,7 @@ router.put('/:id', async (req, res) => {
         title: req.body.editTitle,
         description: req.body.editDescription,
         is_complete: req.body.status,
+        picture: req.body.picture,
       },
       {
         where: {
