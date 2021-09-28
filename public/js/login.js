@@ -32,7 +32,11 @@ const logIn = async (event) => {
     })
         
     if(response.ok){
-        location.href = `/projects`;
+        //var data = await response.json()
+        // let data_id;
+        // console.log(data);
+        // console.log(data_id);
+        location.href = `/projects/`;
     } else {
         alert("Username or Password Entered Incorrectly");
     }

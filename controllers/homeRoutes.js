@@ -64,20 +64,37 @@ router.get('/gcsignup', (req, res) => {
 //Renders All Projects for Specific User
 router.get('/projects', async (req, res) => {
   try {
-        
-      let userData = await GeneralContractors.findByPk(req.session.user_id, {
+      
+    let user;
+      let gcData = await GeneralContractors.findByPk(req.session.user_id, {
         include: {model: Project}
       })
+
+      // let ownerData = await Owner.findByPk(req.session.user_id, {
+      //   include: {model: Project}
+      // })
       
-      let user = userData.get({ plain: true});
-      console.log(user);
+      if (gcData){
+        user = gcData.get({ plain: true});
+        console.log(user);
       
-      
-      res.render('projects', { 
+        res.render('projects', { 
         user,
         isContractor: req.session.isContractor,
         logged_in: req.session.logged_in,
        })
+
+      } else {
+        user = ownerData.get({ plain: true});
+        console.log(user);
+
+        res.render('projects', { 
+        user,
+        isContractor: req.session.isContractor,
+        logged_in: req.session.logged_in,
+       })
+      }
+      
       
 
   } catch (err) {
