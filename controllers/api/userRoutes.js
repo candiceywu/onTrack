@@ -6,7 +6,9 @@ const { GeneralContractors, Owner, Project } = require('../../models')
 router.get('/owners', async (req, res) => {
     try {
 
-        const userData = await Owner.findAll();
+        const userData = await Owner.findAll({
+            include: [{model: Project}]
+        });
 
         res.status(200).json(userData);
     } catch (err) {
@@ -74,7 +76,6 @@ router.post('/', async (req, res) => {
 
 
 
-//user login
 router.post('/login', async (req, res) => {
     try {
         let validPassword;

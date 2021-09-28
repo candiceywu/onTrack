@@ -22,6 +22,16 @@ Scope.belongsTo(Project, {
     foreignKey: 'project_id'
 })
 
+// Owner.hasMany(Project, {
+//     foreignKey: 'owner_id',
+//     onDelete: 'CASCADE'
+// })
+
+// Project.belongsTo(Owner, {
+//     foreignKey: 'owner_id'
+// })
+
+
 module.exports = { 
     GeneralContractors,
     Owner,
