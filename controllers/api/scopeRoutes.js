@@ -36,15 +36,12 @@ router.get('/', async (req, res) => {
 // GET one scope
 //need to create an option for gc to edit a scope
 router.get('/:id', async (req, res) => {
-  // If the user is not logged in, redirect the user to the login page
-  if (!req.session.loggedIn) {
-    res.redirect('/login');
-  } else {
     // If the user is logged in, allow user to view the scope
     try {
       const scopeData = await Scope.findByPk(req.params.id);
       const scope = scopeData.get({ plain: true });
-      res.render('scope/:id', {
+      console.log(scope);
+      res.render('scopeId', {
         scope,
         isContractor: req.session.isContractor
       });
@@ -52,7 +49,7 @@ router.get('/:id', async (req, res) => {
       console.log(err);
       res.status(500).json(err);
     }
-  }
+  
 });
 
 
