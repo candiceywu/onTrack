@@ -2,8 +2,13 @@
     <div class="container projectBorder">
         <div class="row">
             <div class="d-flex col-md-10 align-text-bottom">
+                {{#if isContractor}}
                 <h2 class="m-0" id="h2">{{user.generalContractor}} | Projects Dashboard</h2>
                 <p id="idStore" style="visibility: hidden">{{user.id}}</p>
+                {{else}}
+                <h2 class="m-0" id="h2">{{user.firstName}} | Projects Dashboard</h2>
+                <p id="idStore" style="visibility: hidden">{{user.id}}</p>
+                {{/if}}
             </div>
             <div class="d-flex col-md-2 align-items-end justify-content-end">
                 {{#if isContractor}}

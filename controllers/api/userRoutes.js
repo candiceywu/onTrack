@@ -75,19 +75,13 @@ router.post('/', async (req, res) => {
 });
 
 
-
+//LOGIN ROUTE
 router.post('/login', async (req, res) => {
     try {
-        let validPassword;
-        const ownerData = await Owner.findOne({ where: { username: req.body.loginUser } }, {
-            include: [{ model: Project }]
-        });
 
-        const gcData = await GeneralContractors.findOne(
-            {
-                where: { username: req.body.loginUser },
-                include: [{ model: Project }],
-            });
+        let validPassword;
+        const ownerData = await Owner.findOne({ where: { username: req.body.loginUser } });
+        const gcData = await GeneralContractors.findOne({ where: { username: req.body.loginUser } });
 
         console.log(gcData);
 
@@ -102,8 +96,6 @@ router.post('/login', async (req, res) => {
             validPassword = await ownerData.checkPassword(req.body.password);
         } else {
             validPassword = await gcData.checkPassword(req.body.password);
-            console.log("error")
-            console.log(validPassword);
         }
 
         if (!validPassword) {
@@ -112,26 +104,6 @@ router.post('/login', async (req, res) => {
                 .json({ message: 'Incorrect email or password, please try again' });
             return;
         }
-
-        // if (ownerData){
-        //     ownerData = ownerData.get({ plain: true})
-        // } else {
-        //     gcData = gcData.get({ plain:true})
-        // }
-        // console.log(ownerData);
-        // console.log(gcData);
-
-        // const ownerPassword = await ownerData.checkPassword(req.body.password);
-        // const gcPassword = await gcData.checkPassword(req.body.password);
-
-        // if (!ownerPassword && !gcPassword) {
-        //     res
-        //         .status(400)
-        //         .json({ message: 'Incorrect email or password, please try again' });
-        //     return;
-        // }
-
-        console.log("Success. Logged In");
 
         req.session.save(() => {
 
