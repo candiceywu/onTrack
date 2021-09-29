@@ -49,7 +49,9 @@
                 </a>
             </div>
             <div class=" d-flex col-md-1 scopeHeaders2">
+                {{#if ../isContractor}}
                 <a href="/project/scope/{{scope.id}}">EDIT</a>
+                {{/if}}
             </div>
             {{/each}}
         </div>
