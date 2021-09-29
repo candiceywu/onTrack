@@ -40,7 +40,7 @@ const deleteScope = async (event) => {
     event.preventDefault();
 
     if(confirm("Are you sure you want to delete")){
-        const destroyScope = fetch (`/api/scope/${storedScopeId}`, {
+        const destroyScope = await fetch (`/api/scope/${storedScopeId}`, {
             method: "DELETE",
         })
     }
