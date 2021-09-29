@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+ 
 
 // GET one project
 router.get('/projects/:id', async (req, res) => {
