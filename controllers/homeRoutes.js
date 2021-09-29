@@ -104,7 +104,8 @@ router.get('/project/scope/:id', async (req, res) => {
     
     res.render('scopeId', {
       scope,
-      isContractor: req.session.isContractor
+      isContractor: req.session.isContractor,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     console.log(err);
